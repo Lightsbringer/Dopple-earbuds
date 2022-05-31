@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateInstruction";
+    //https://localhost:44326/admin/updateinstruction access this page
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Number of steps</th>
+            <th scope="col">Description</th>
+            <th scope="col">Total time</th>
+            <th scope="col">Number Of Image</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Sub-Assembly E-Module - input</th>
+            <td>3</td>
+            <td>
+                Sub-assembled Bamboo E-Module left &
+                right, ready for customization of the
+                faceplates.
+            </td>
+            <td>45.5 S</td>
+            <td>4</td>
+            <td>
+                <input type="submit" value="Edit" class="btn btn-primary" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Sub-Assembly Cradle - input</th>
+            <td>4</td>
+            <td>
+                Sub-assembled Bamboo Cradle, ready for
+                customization of Visual bottom and Outer Top.
+            </td>
+            <td>35.6 S</td>
+            <td>4</td>
+            <td>
+                <input type="submit" value="Edit" class="btn btn-primary " />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </td>
+        </tr>
+    </tbody>
+</table>
