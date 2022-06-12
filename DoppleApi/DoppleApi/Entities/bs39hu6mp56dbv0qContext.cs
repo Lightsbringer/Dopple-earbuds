@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using DoppleApi.Models;
 
 #nullable disable
 
@@ -300,5 +301,9 @@ namespace DoppleApi.Entities
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<DoppleApi.Models.InstructionModel> InstructionModel { get; set; }
+
+        public DbSet<StationModel> StationModel { get; set; }
     }
 }

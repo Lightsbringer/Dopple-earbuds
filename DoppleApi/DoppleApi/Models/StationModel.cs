@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DoppleApi.Entities;
-namespace DoppleApi.Models;
-    public class StationModel
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+public class StationModel
     {
-        public int StationId { get; set; }
+        [Key]
+         public int StationId { get; set; }
         public string StatusStation { get; set; }
     }
 

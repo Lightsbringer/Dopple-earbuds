@@ -5,8 +5,7 @@ using DoppleApi.Entities;
 using DoppleApi.Models;
 namespace Dopple_API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+
     public class OrderController : Controller
     {
 
@@ -17,7 +16,7 @@ namespace Dopple_API.Controllers
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
 
-        [HttpGet("GetOrderById")]
+        [HttpGet("GetOrderById.{format}"), FormatFilter]
         public async Task<ActionResult<OrderModel>> GetOrderById(String Id)
         {
             OrderModel Orders = await DoppleDB.Orders.Select(s => new OrderModel
@@ -39,7 +38,7 @@ namespace Dopple_API.Controllers
                 return Orders;
             }
         }
-        [HttpPost("InsertUser")]
+        [HttpPost("InsertUser.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(OrderModel Order)
         {
             var entity = new Order()
@@ -51,12 +50,42 @@ namespace Dopple_API.Controllers
                 EarshellColor = Order.EarshellColor,
                 CradleColor = Order.CradleColor,
                 StatusOrder = Order.StatusOrder,
-
             };
             DoppleDB.Orders.Add(entity);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        [HttpDelete("DeleteOrder/{Id}.{format}"), FormatFilter]
+        public async Task<HttpStatusCode> DeleteUser(String Id)
+        {
+            var entity = new Order()
+            {
+                OrderId = Id,
+            };
+            DoppleDB.Orders.Attach(entity);
+            DoppleDB.Orders.Remove(entity);
+            await DoppleDB.SaveChangesAsync();
+            return HttpStatusCode.OK;
+        }
+
+
+        [HttpPost("UpdateOrder.{format}"), FormatFilter]
+        public async Task<HttpStatusCode> UpdateOrder(OrderModel Order)
+        {
+            var entity = new Order();
+
+            entity.OrderId = Order.OrderId;
+            entity.OrderDate = Order.OrderDate; ;
+            entity.FaceplateText = Order.FaceplateText;
+            entity.EarshellSize = Order.EarshellSize;
+            entity.EarshellColor = Order.EarshellColor;
+            entity.CradleColor = Order.CradleColor;
+            entity.StatusOrder = Order.StatusOrder;
+
+
+            await DoppleDB.SaveChangesAsync();
+            return HttpStatusCode.OK;
+        }
+
     }
-    
 }

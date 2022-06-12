@@ -4,7 +4,7 @@ namespace DoppleApi.Models;
 
 public class OrderModel
 {
-
+    
     public string OrderId { get; set; }
     public DateTime OrderDate { get; set; }
     public string FaceplateText { get; set; }
@@ -13,7 +13,7 @@ public class OrderModel
     public string CradleColor { get; set; }
     public string StatusOrder { get; set; }
 
-    public virtual StationModel Station { get; set; }
+    //public virtual StationModel Station { get; set; }
 
 
 }

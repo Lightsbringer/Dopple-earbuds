@@ -1,18 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DoppleApi.Entities;
-namespace DoppleApi.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class InstructionModel
+namespace DoppleApi.Models
 {
-    public string InstructionId { get; set; }
-    public int StationId { get; set; }
-    public string Description { get; set; }
-    public string ImagePath { get; set; }
 
-}
-public class InstructionModelWrite
-{
-    public string InstructionId { get; set; }
-    public string Description { get; set; }
-    public string ImagePath { get; set; }
+    public class InstructionModel
+    {
+        [Key]
+        public string InstructionId { get; set; }
+        [Required]
+        public string Description { get; set; }
+        [Required]
+        public string ImagePath { get; set; }
+        public int StationId { get; set; }
+        [Required]
+        [ForeignKey("StationId")]
+        public virtual StationModel Station { get; set; }
+
+    }
 }

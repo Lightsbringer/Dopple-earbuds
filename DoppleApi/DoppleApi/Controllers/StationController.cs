@@ -4,8 +4,11 @@ using System.Net;
 using DoppleApi.Entities;
 using DoppleApi.Models;
 
-namespace DoppleApi.Controllers;
-    public class StationController
+
+namespace DoppleApi.Controllers
+{
+ 
+    public class StationController : Controller
     {
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
 
@@ -14,15 +17,15 @@ namespace DoppleApi.Controllers;
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
 
-        [HttpGet("GetStationById")]
+        [HttpGet("GetStationById.{format}"), FormatFilter]
         public async Task<ActionResult<StationModel>> GetStatusById(int Id)
         {
-           StationModel Station = await DoppleDB.Stations.Select(s => new StationModel
-           {
-               StationId = s.StationId,
-               StatusStation = s.StatusStation,
+            StationModel Station = await DoppleDB.Stations.Select(s => new StationModel
+            {
+                StationId = s.StationId,
+                StatusStation = s.StatusStation,
 
-           }).FirstOrDefaultAsync(s => s.StationId == Id);
+            }).FirstOrDefaultAsync(s => s.StationId == Id);
             if (Station == null)
             {
                 return null;
@@ -32,7 +35,7 @@ namespace DoppleApi.Controllers;
                 return Station;
             }
         }
-        [HttpPost("InsertStation")]
+        [HttpPost("InsertStation.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(StationModel Station)
         {
             var entity = new Station()
@@ -45,5 +48,29 @@ namespace DoppleApi.Controllers;
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        [HttpDelete("DeleteStation/{Id}.{format}"), FormatFilter]
+        public async Task<HttpStatusCode> DeleteUser(int Id)
+        {
+            var entity = new Station()
+            {
+                StationId = Id,
+            };
+            DoppleDB.Stations.Attach(entity);
+            DoppleDB.Stations.Remove(entity);
+            await DoppleDB.SaveChangesAsync();
+            return HttpStatusCode.OK;
+        }
+
+
+        [HttpPost("UpdateStation.{format}"), FormatFilter]
+        public async Task<HttpStatusCode> UpdateOrder(StationModel Station)
+        {
+            var entity = new Station();
+            entity.StationId = Station.StationId;
+            entity.StatusStation = Station.StatusStation;
+            await DoppleDB.SaveChangesAsync();
+            return HttpStatusCode.OK;
+        }
     }
 
+}
