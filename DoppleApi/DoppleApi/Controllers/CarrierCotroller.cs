@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
-
+   
     public class CarrierController : Controller
     {
-        
+
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
 
@@ -16,7 +16,7 @@ namespace Dopple_API.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        //get carrier by ID and then format either XML or  JSON
         [HttpGet("GetCarrierById.{format}"), FormatFilter]
         public async Task<ActionResult<CarrierModel>> GetOrderById(String Id)
         {
@@ -37,12 +37,11 @@ namespace Dopple_API.Controllers
                 return Carrier;
             }
         }
+        //insert carrier , with chosen format XML or  JSON
         [HttpPost("InsertCarrier.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(CarrierModel Carrier)
         {
 
-
-            
             Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == Carrier.StationId);
             Order order = DoppleDB.Orders.FirstOrDefault(s => s.OrderId == Carrier.OrderIdO);
             var entity = new Carrier()
@@ -51,7 +50,7 @@ namespace Dopple_API.Controllers
                 OrderIdO = order.OrderId,
                 StationId = stat.StationId,
                 StatusCarrier = Carrier.StatusCarrier,
-                
+
             };
 
             DoppleDB.Carriers.Add(entity);
@@ -59,6 +58,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        //delete carrier by ID and with format either XML or  JSON
         [HttpDelete("DeleteCarrier/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(String Id)
         {
@@ -72,7 +72,7 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.OK;
         }
 
-
+        // update carrier by ID with chosen format XML or  JSON
         [HttpPost("UpdateCarrier.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(CarrierModel Carrier)
         {
@@ -86,7 +86,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
-        
+
     }
 
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using DoppleApi.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-
-#nullable disable
+﻿#nullable disable
 
 namespace DoppleApi.Entities
 {
@@ -18,5 +10,5 @@ namespace DoppleApi.Entities
         public int StationId { get; set; }
         public virtual Station Station { get; set; }
     }
-   
+
 }

@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using DoppleApi.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace DoppleApi.Models
+﻿namespace DoppleApi.Models
 {
     public class TurnOverTimeModel
     {

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using DoppleApi.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DoppleApi.Models
 {
@@ -9,11 +6,14 @@ namespace DoppleApi.Models
     {
         [Key]
         public string OperatorId { get; set; }
+        [Required]
         public string Username { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         public string Authorization { get; set; }
 
         //public virtual Operatorposition Operatorposition { get; set; }
-      //  public virtual Testresult Testresult { get; set; }
+        //  public virtual Testresult Testresult { get; set; }
     }
 }

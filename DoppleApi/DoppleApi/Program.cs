@@ -5,7 +5,8 @@ using MySql.EntityFrameworkCore.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddEntityFrameworkMySQL().AddDbContext<bs39hu6mp56dbv0qContext>(options => {
+builder.Services.AddEntityFrameworkMySQL().AddDbContext<bs39hu6mp56dbv0qContext>(options =>
+{
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 

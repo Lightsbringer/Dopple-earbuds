@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-using DoppleApi;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MySql.Data.MySqlClient;
 
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class TestController : Controller
     {
-        
+
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
         public TestController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
@@ -50,8 +47,8 @@ namespace Dopple_API.Controllers
             var entity = new Test()
             {
                 TagId = carrier.TagId,
-            TestId = Test.TestId,
-            OrderId = order.OrderId,
+                TestId = Test.TestId,
+                OrderId = order.OrderId,
             };
 
             DoppleDB.Tests.Add(entity);
@@ -82,7 +79,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
-        
+
     }
 }
 

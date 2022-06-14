@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class OperatorController : Controller
@@ -15,8 +15,8 @@ namespace Dopple_API.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
-        [HttpGet("GetOperatorrById.{format}"), FormatFilter]
+        // get operator by id in either XML or  JSON format
+        [HttpGet("GetOperatorById.{format}"), FormatFilter]
         public async Task<ActionResult<OperatorModel>> GetOrderById(String Id)
         {
             OperatorModel Operator = await DoppleDB.Operators.Select(s => new OperatorModel
@@ -36,6 +36,7 @@ namespace Dopple_API.Controllers
                 return Operator;
             }
         }
+        // insert operator in the database either XML or  JSON format
         [HttpPost("InsertOperator.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(OperatorModel Operator)
         {
@@ -54,6 +55,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        // delete operator from the database either XML or  JSON format
         [HttpDelete("DeleteOperator/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(String Id)
         {
@@ -67,14 +69,14 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.OK;
         }
 
-
+        // update operator in the database either XML or  JSON format
         [HttpPost("UpdateOperator.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(OperatorModel Operator)
         {
             var entity = await DoppleDB.Operators.FirstOrDefaultAsync(s => s.OperatorId == Operator.OperatorId);
 
             entity.OperatorId = Operator.OperatorId;
-                entity.Username = Operator.Username;
+            entity.Username = Operator.Username;
             entity.Password = Operator.Password;
             entity.Authorization = Operator.Authorization;
 
@@ -82,6 +84,6 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.OK;
         }
 
-        
+
     }
 }

@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-using DoppleApi;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MySql.Data.MySqlClient;
-
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class TestResultController : Controller
@@ -18,7 +14,7 @@ namespace Dopple_API.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        // get test result by id in either XML or  JSON format
         [HttpGet("GetTestResultById.{format}"), FormatFilter]
         public async Task<ActionResult<TestResultModel>> GetInstructionById(int Id)
         {
@@ -41,13 +37,14 @@ namespace Dopple_API.Controllers
 
             }
         }
+        // insert test result by id in either XML or  JSON format
         [HttpPost("InsertTestResult.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(TestResultModel TestResult)
         {
 
 
             // get existing subject with Id=202
-           Test test = DoppleDB.Tests.FirstOrDefault(s => s.TestId == TestResult.TestId);
+            Test test = DoppleDB.Tests.FirstOrDefault(s => s.TestId == TestResult.TestId);
             Operator opr = DoppleDB.Operators.FirstOrDefault(s => s.OperatorId == TestResult.OperatorCompanyId);
             var entity = new Testresult()
             {
@@ -62,9 +59,10 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
-        
+
+        // delete test result by id and operatorID in either XML or  JSON format
         [HttpDelete("DeleteTestResult/{Id}.{format}"), FormatFilter]
-        public async Task<HttpStatusCode> DeleteUser(int Id,String operatorId)
+        public async Task<HttpStatusCode> DeleteUser(int Id, String operatorId)
         {
             var entity = new Testresult()
             {
@@ -76,10 +74,11 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
+        // update etst result by id in either XML or  JSON format
         [HttpGet("UpdateTestResultById.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(TestResultModel TestResult)
         {
-            var entity = await DoppleDB.Testresults.FirstOrDefaultAsync(s => s.TestId == TestResult.TestId);
+            var entity = await DoppleDB.Testresults.FirstOrDefaultAsync(s => s.TestId == TestResult.TestId && s.OperatorCompanyId == TestResult.OperatorCompanyId);
             entity.TestId = TestResult.TestId;
             entity.Result = TestResult.Result;
             entity.Reason = TestResult.Reason;

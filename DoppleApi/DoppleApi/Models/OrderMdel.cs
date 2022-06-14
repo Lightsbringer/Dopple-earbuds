@@ -1,20 +1,28 @@
-﻿using DoppleApi.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace DoppleApi.Models;
 
-public class OrderModel
+namespace DoppleApi.Models
 {
-    
-    public string OrderId { get; set; }
-    public DateTime OrderDate { get; set; }
-    public string FaceplateText { get; set; }
-    public float EarshellSize { get; set; }
-    public string EarshellColor { get; set; }
-    public string CradleColor { get; set; }
-    public string StatusOrder { get; set; }
+    public class OrderModel
+    {
+        [Key]
+        public string OrderId { get; set; }
+        [Required]
+        public DateTime OrderDate { get; set; }
+        [Required]
+        public string FaceplateText { get; set; }
+        [Required]
+        public float EarshellSize { get; set; }
+        [Required]
+        public string EarshellColor { get; set; }
+        [Required]
+        public string CradleColor { get; set; }
+        [Required]
+        public string StatusOrder { get; set; }
 
-    //public virtual StationModel Station { get; set; }
+        //public virtual StationModel Station { get; set; }
 
 
+    }
 }
 

@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-using DoppleApi;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MySql.Data.MySqlClient;
-
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class TurnOverTimeController : Controller
@@ -18,7 +14,7 @@ namespace Dopple_API.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        // get turnOverTime by id in either XML or  JSON format
         [HttpGet("GetTurnoOverTimeById.{format}"), FormatFilter]
         public async Task<ActionResult<TurnOverTimeModel>> GetInstructionById(String Id)
         {
@@ -41,14 +37,15 @@ namespace Dopple_API.Controllers
 
             }
         }
+        // insert turnOverTime in the database in either XML or  JSON format
         [HttpPost("InsertTurnoOverTime.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(TurnOverTimeModel TurnOverTime)
         {
 
 
-            // get existing subject with Id=202
+            // get existing subject with Id
             Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == TurnOverTime.StationId);
-           Order order = DoppleDB.Orders.FirstOrDefault(s => s.OrderId == TurnOverTime.OrderId);
+            Order order = DoppleDB.Orders.FirstOrDefault(s => s.OrderId == TurnOverTime.OrderId);
             var entity = new Turnovertime()
             {
                 OrderId = order.OrderId,
@@ -64,6 +61,7 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.Created;
         }
 
+        // deletes turnOverTime in the database based on orderID and stationID in either XML or  JSON format
         [HttpDelete("DeleteTurnoOverTime/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(int StationId, String Id)
         {
@@ -77,15 +75,16 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
+        // update TurnOverTime based on OrderID and StationID in either XML or  JSON format
         [HttpGet("UpdateTurnoOverTime.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(TurnOverTimeModel TurnOverTime)
         {
-            var entity = await DoppleDB.Turnovertimes.FirstOrDefaultAsync(s => s.OrderId == TurnOverTime.OrderId);
+            var entity = await DoppleDB.Turnovertimes.FirstOrDefaultAsync(s => s.OrderId == TurnOverTime.OrderId && s.StationId == TurnOverTime.StationId);
             entity.OrderId = TurnOverTime.OrderId;
-               entity.StationId = TurnOverTime.StationId;
-                entity.DateStart = TurnOverTime.DateStart;
-                entity.TimeStart = TurnOverTime.TimeStart;
-                entity.TimeEnd = TurnOverTime.TimeEnd;
+            entity.StationId = TurnOverTime.StationId;
+            entity.DateStart = TurnOverTime.DateStart;
+            entity.TimeStart = TurnOverTime.TimeStart;
+            entity.TimeEnd = TurnOverTime.TimeEnd;
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }

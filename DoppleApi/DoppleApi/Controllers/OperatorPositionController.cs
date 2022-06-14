@@ -1,22 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
 
 
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class OperatorPositionController : Controller
     {
-        
+
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
         public OperatorPositionController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        // get operator position by id in either XML or  JSON format
         [HttpGet("GetOperatorPositionById.{format}"), FormatFilter]
         public async Task<ActionResult<OperatorPositionModel>> GetInstructionById(String Id)
         {
@@ -35,6 +35,7 @@ namespace Dopple_API.Controllers
 
             }
         }
+        // insert operator position in either XML or  JSON format
         [HttpPost("InsertOperatorPosition.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(OperatorPositionModel OperatorPosition)
         {
@@ -54,7 +55,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
-
+        // delete operator position by id in either XML or  JSON format
         [HttpDelete("DeleteOperatorPosition/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(String Id)
         {
@@ -67,6 +68,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
+        // update operator position by id in either XML or  JSON format
         [HttpPut("UpdateOperatorPosition.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(OperatorPositionModel OperatorPosition)
         {
@@ -77,7 +79,7 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.OK;
         }
 
-        
+
     }
 }
 

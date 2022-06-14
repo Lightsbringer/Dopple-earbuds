@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using DoppleApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -304,6 +301,6 @@ namespace DoppleApi.Entities
 
         public DbSet<DoppleApi.Models.InstructionModel> InstructionModel { get; set; }
 
-        public DbSet<StationModel> StationModel { get; set; }
+        public DbSet<Models.StationModel> StationModel { get; set; }
     }
 }

@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-
 
 namespace DoppleApi.Controllers
 {
- 
+
     public class StationController : Controller
     {
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
@@ -16,7 +15,7 @@ namespace DoppleApi.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        // get station by id in either XML or  JSON format
         [HttpGet("GetStationById.{format}"), FormatFilter]
         public async Task<ActionResult<StationModel>> GetStatusById(int Id)
         {
@@ -35,6 +34,7 @@ namespace DoppleApi.Controllers
                 return Station;
             }
         }
+        // insert station by id in either XML or  JSON format
         [HttpPost("InsertStation.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(StationModel Station)
         {
@@ -48,6 +48,7 @@ namespace DoppleApi.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        // delete station by id in either XML or  JSON format
         [HttpDelete("DeleteStation/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(int Id)
         {
@@ -61,7 +62,7 @@ namespace DoppleApi.Controllers
             return HttpStatusCode.OK;
         }
 
-
+        // update station by id in in either XML or  JSON format
         [HttpPost("UpdateStation.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(StationModel Station)
         {

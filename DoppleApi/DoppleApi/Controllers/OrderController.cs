@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class OrderController : Controller
@@ -15,7 +15,7 @@ namespace Dopple_API.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-
+        //get orders by user id in either XML or  JSON format
         [HttpGet("GetOrderById.{format}"), FormatFilter]
         public async Task<ActionResult<OrderModel>> GetOrderById(String Id)
         {
@@ -38,7 +38,8 @@ namespace Dopple_API.Controllers
                 return Orders;
             }
         }
-        [HttpPost("InsertUser.{format}"), FormatFilter]
+        // insert order by id in either XML or  JSON format
+        [HttpPost("InsertOrder.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(OrderModel Order)
         {
             var entity = new Order()
@@ -55,6 +56,7 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
+        // delete order by id in either XML or  JSON format
         [HttpDelete("DeleteOrder/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(String Id)
         {
@@ -68,7 +70,7 @@ namespace Dopple_API.Controllers
             return HttpStatusCode.OK;
         }
 
-
+        // update order by id in either XML or  JSON format
         [HttpPost("UpdateOrder.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(OrderModel Order)
         {

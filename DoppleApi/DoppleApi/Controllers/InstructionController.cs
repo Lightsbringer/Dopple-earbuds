@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoppleApi.Entities;
+using DoppleApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using DoppleApi.Entities;
-using DoppleApi.Models;
-using DoppleApi;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MySql.Data.MySqlClient;
-
-namespace Dopple_API.Controllers
+namespace DoppleApi.Controllers
 {
 
     public class InstructionController : Controller
@@ -18,6 +14,7 @@ namespace Dopple_API.Controllers
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
 
+        // get the intruction by id in either XML or  JSON format
         [HttpGet("GetInstructionById.{format}"), FormatFilter]
         public async Task<ActionResult<InstructionModel>> GetInstructionById(String Id)
         {
@@ -38,13 +35,14 @@ namespace Dopple_API.Controllers
 
             }
         }
+        // insert instruction into the database in either XML or  JSON format
         [HttpPost("InsertInstruction.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(InstructionModel Instructions)
         {
-           
 
-                // get existing subject with Id=202
-                Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == Instructions.StationId);
+
+            // gets existing object with the requested id
+            Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == Instructions.StationId);
             var entity = new Instruction()
             {
                 InstructionId = Instructions.InstructionId,
@@ -53,12 +51,12 @@ namespace Dopple_API.Controllers
                 StationId = stat.StationId,
             };
 
-        DoppleDB.Instructions.Add(entity);
-            
-            await DoppleDB.SaveChangesAsync();
-           return HttpStatusCode.Created;
-            }
+            DoppleDB.Instructions.Add(entity);
 
+            await DoppleDB.SaveChangesAsync();
+            return HttpStatusCode.Created;
+        }
+        // deletes intruction based on the id in either XML or  JSON format
         [HttpDelete("DeleteInstruction/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(String Id)
         {
@@ -71,66 +69,20 @@ namespace Dopple_API.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
+        // updates intruction based on the id in either XML or  JSON format
         [HttpPut("UpdateInstruction.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(InstructionModel Instructions)
         {
             var entity = await DoppleDB.Instructions.FirstOrDefaultAsync(s => s.InstructionId == Instructions.InstructionId);
-            entity.InstructionId = Instructions.InstructionId; 
-                entity.Description = Instructions.Description;
+            entity.InstructionId = Instructions.InstructionId;
+            entity.Description = Instructions.Description;
             entity.ImagePath = Instructions.ImagePath;
             entity.StationId = Instructions.StationId;
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
-        }
-
-        //private int clean_table(string table)
-        //{
-        //    try
-        //    {
-        //        using (DoppleDB)
-        //        {
-
-
-        //            String sql = "SET FOREIGN_KEY_CHECKS=0";
-
-        //            using (MySqlCommand comm = new MySqlCommand(sql, DoppleDB))
-        //            {
-        //                comm.ExecuteNonQuery();
-        //            }
-        //            conn.Close();
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        log.Error("clean_table " + e.Message);
-        //        return 0;
-        //    }
-
-        //    return 1;
-        //}        
+        }     
     }
 }
-        //public async Task<HttpStatusCode> InsertUser(InstructionModel Instructions)
-        //{
-            
-        //    var entity = new Instruction()
-        //    {
-        //        InstructionId = Instructions.InstructionId,
-        //        Description = Instructions.Description,
-        //        ImagePath = Instructions.ImagePath,
 
-        //    };
 
-        //    DoppleDB.Instructions.Add(entity);
-        //    await DoppleDB.SaveChangesAsync();
-        //    return HttpStatusCode.Created;
-        //}
-        //private List<SelectListItem> GetInstructions()
-        //{
-        //    var lstInstructions = new List<SelectListItem>();
-        //    //PaginatedList<InstructionModel> instructions = _instructionModels.Station("StationId");
 
-        //}
-        //.{format}"), FormatFilter
-
-    
