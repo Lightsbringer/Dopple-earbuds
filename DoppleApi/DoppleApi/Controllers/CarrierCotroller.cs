@@ -19,28 +19,6 @@ namespace DoppleApi.Controllers
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
         //get carrier by ID and then format either XML or  JSON
-
-        [HttpGet("GetCarriers.{format}"), FormatFilter]
-        public async Task<List<CarrierModel>> GetAllCarriers()
-        {
-            var carriers = new List<CarrierModel>();
-            var allCarriers = await DoppleDB.Carriers.ToListAsync();
-            if (carriers?.Any() == true)
-            {
-                foreach (var carrier in allCarriers)
-                {
-                    carriers.Add(new CarrierModel()
-                    {
-                        TagId = carrier.TagId,
-                        OrderIdO = carrier.OrderIdO,
-                        StationId = carrier.StationId,
-                        StatusCarrier = carrier.StatusCarrier,
-                    });
-                 //return somewhere here jeremi and delete the comment <3       
-                }
-            }
-            return null;
-        }
         [HttpGet("GetCarrierById.{format}"), FormatFilter]
         public async Task<ActionResult<CarrierModel>> GetOrderById(String Id)
         {
