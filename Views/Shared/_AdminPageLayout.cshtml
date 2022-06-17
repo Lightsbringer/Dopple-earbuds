@@ -21,18 +21,13 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">Station</a>
-                            <ul class="dropdown dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-controller="StationManager">Station Manager</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-controller="StationReport">Station Report</a>
-                                </li>
-                            </ul>
-
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Station</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="StationManager">Station Manager</a>
+                                <a class="dropdown-item"asp-area="" asp-controller="Admin" asp-action="StationReport">Station Report</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="AddStation">Add Station</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Contact</a>

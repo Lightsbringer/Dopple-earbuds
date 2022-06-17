@@ -3,8 +3,11 @@ using Microsoft.Extensions.Logging;
 using SignUp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SignUp.Controllers
@@ -12,15 +15,15 @@ namespace SignUp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        string baseUrl = "https://localhost:44388/";
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+           return View();
         }
 
         public IActionResult Privacy()

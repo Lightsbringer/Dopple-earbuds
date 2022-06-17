@@ -1,32 +1,48 @@
-﻿@{
-    ViewData["Title"] = "StationManager";
-    //https://localhost:44326/admin/StationReport access this page
+﻿@model IEnumerable<WebApplication3.Models.StationReport>
 
+@{
+    ViewData["Title"] = "StationReport";
     Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
 }
 
-<table class="table table-striped">
+<h1>StationReport</h1>
+
+<p>
+    
+</p>
+<table class="table">
     <thead>
         <tr>
-            <th scope="col">Station#</th>
-            <th scope="col">User Logged In</th>
-            <th scope="col">Status</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Station)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLoggedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
+@foreach (var item in Model) {
         <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>Occupied</td>
-            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Station)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLoggedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>3</td>
-            <td>Occupied</td>
-            <td></td>
-        </tr>
-
+}
     </tbody>
 </table>
-

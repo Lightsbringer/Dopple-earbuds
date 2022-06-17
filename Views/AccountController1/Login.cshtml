@@ -1,4 +1,4 @@
-﻿@model SignUp.View_Model.Login
+﻿@model SignUp.View_Model.UserLogin
 
 @{
     ViewData["Title"] = "Login";
@@ -13,8 +13,8 @@
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
+                <label asp-for="UserID" class="control-label"></label>
+                <input asp-for="UserID" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication3.Models;
 
 namespace SignUp.Controllers
 {
@@ -31,6 +32,18 @@ namespace SignUp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult StationManager() 
+        {
+            return View();
+        }
+        public IActionResult StationReport()
+        {
+            List<StationReport> stations = new List<StationReport>();
+            stations.Add(new StationReport { Station = 1, Status = "Active", UserLoggedIn = true });
+            stations.Add(new StationReport { Station = 2, Status = "Inactive", UserLoggedIn = false });
+            stations.Add(new StationReport { Station = 3, Status = "Inactive", UserLoggedIn = true });
+            return View(stations);
         }
     }
 }

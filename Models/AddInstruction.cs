@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication3;
 
 namespace SignUp.Models
 {
     public class AddInstruction
     {
-        public String Name { get; set; }
-        public int Step { get; set; }
+
+        public String InstructionId { get; set; }
+        public int ImagePath { get; set; }
         public String Description { get; set; }
-        public String SelectStation { get; set; }
+        public String StationId { get; set; }
         public DateTime Time { get; set; }
         
     }

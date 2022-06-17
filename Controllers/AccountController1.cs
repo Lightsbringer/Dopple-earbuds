@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SignUp.View_Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication3.Models;
 
 namespace SignUp.Controllers
 {
@@ -13,9 +15,13 @@ namespace SignUp.Controllers
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult Login(UserLogin userLogin)
         {
-            return View();
+            if(userLogin.UserID == "insert user id here" && userLogin.Password == "insert user password here")
+            {
+                return View("UserPage", userLogin);
+            }
+            
         }
 
         public IActionResult Index()
