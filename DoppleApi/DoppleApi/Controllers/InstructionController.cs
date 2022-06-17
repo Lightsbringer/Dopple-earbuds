@@ -36,7 +36,27 @@ namespace DoppleApi.Controllers
 
             }
         }
+        // get the intruction by id in either XML or  JSON format
+        [HttpGet("GetInstructionByStationId.{format}"), FormatFilter]
+        public async Task<ActionResult<InstructionModel>> GetInstructionByStationId(int Id)
+        {
+            InstructionModel Instructions = await DoppleDB.Instructions.Select(s => new InstructionModel
+            {
+                InstructionId = s.InstructionId,
+                StationId = s.StationId,
+                Description = s.Description,
+                ImagePath = s.ImagePath,
+            }).FirstOrDefaultAsync(s => s.StationId == Id);
+            if (Instructions == null)
+            {
+                return null;
+            }
+            else
+            {
+                return Instructions;
 
+            }
+        }
         // insert instruction into the database in either XML or  JSON format
         [HttpPost("InsertInstruction.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(InstructionModel Instructions)
