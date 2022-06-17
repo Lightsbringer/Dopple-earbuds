@@ -72,7 +72,7 @@ namespace DoppleApi.Controllers
         }
 
         // update order by id in either XML or  JSON format
-        [HttpPost("UpdateOrder.{format}"), FormatFilter]
+        [HttpPut("UpdateOrder.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(OrderModel Order)
         {
             var entity = new Order();

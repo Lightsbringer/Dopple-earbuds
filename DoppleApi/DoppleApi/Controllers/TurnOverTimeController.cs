@@ -76,7 +76,7 @@ namespace DoppleApi.Controllers
             return HttpStatusCode.OK;
         }
         // update TurnOverTime based on OrderID and StationID in either XML or  JSON format
-        [HttpGet("UpdateTurnoOverTime.{format}"), FormatFilter]
+        [HttpPut("UpdateTurnoOverTime.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(TurnOverTimeModel TurnOverTime)
         {
             var entity = await DoppleDB.Turnovertimes.FirstOrDefaultAsync(s => s.OrderId == TurnOverTime.OrderId && s.StationId == TurnOverTime.StationId);

@@ -83,7 +83,7 @@ namespace DoppleApi.Controllers
             return HttpStatusCode.OK;
         }
         // update etst result by id in either XML or  JSON format
-        [HttpGet("UpdateTestResultById.{format}"), FormatFilter]
+        [HttpPut("UpdateTestResultById.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(TestResultModel TestResult)
         {
             var entity = await DoppleDB.Testresults.FirstOrDefaultAsync(s => s.TestId == TestResult.TestId && s.OperatorCompanyId == TestResult.OperatorCompanyId);

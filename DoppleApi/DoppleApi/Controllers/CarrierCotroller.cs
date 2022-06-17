@@ -78,7 +78,7 @@ namespace DoppleApi.Controllers
         }
 
         // update carrier by ID with chosen format XML or  JSON
-        [HttpPost("UpdateCarrier.{format}"), FormatFilter]
+        [HttpPut("UpdateCarrier.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(CarrierModel Carrier)
         {
             var entity = await DoppleDB.Carriers.FirstOrDefaultAsync(s => s.TagId == Carrier.TagId);

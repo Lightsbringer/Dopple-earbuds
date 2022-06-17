@@ -71,7 +71,7 @@ namespace DoppleApi.Controllers
         }
 
         // update operator in the database either XML or  JSON format
-        [HttpPost("UpdateOperator.{format}"), FormatFilter]
+        [HttpPut("UpdateOperator.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(OperatorModel Operator)
         {
             var entity = await DoppleDB.Operators.FirstOrDefaultAsync(s => s.OperatorId == Operator.OperatorId);

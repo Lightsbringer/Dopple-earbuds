@@ -70,7 +70,7 @@ namespace DoppleApi.Controllers
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
-        [HttpGet("UpdateTestById.{format}"), FormatFilter]
+        [HttpPut("UpdateTestById.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateUser(TestModel Test)
         {
             var entity = await DoppleDB.Tests.FirstOrDefaultAsync(s => s.TestId == Test.TestId);
