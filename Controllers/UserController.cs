@@ -11,6 +11,8 @@ namespace WebApplication3.Controllers
     {
         List<UserPage> userdata = new List<UserPage>();
 
+
+       
         //this is for the input 
         //[]
         public IActionResult UserPage(InstructionEntity _instruction, OperatorEntity _operator,StationEntity _stationEntity)

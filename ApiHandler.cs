@@ -9,6 +9,7 @@ namespace WebApplication3
 {
     public class ApiHandler
     {
+
         public OperatorEntity GetOperatorFromApiByOperatorId(int id)
         {
             try

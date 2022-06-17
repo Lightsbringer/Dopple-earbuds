@@ -13,6 +13,15 @@ namespace WebApplication3.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult AddInstruction(AddInstruction model)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("AddInstruction");
+            }
+            return View();
+        }
         public IActionResult UpdateInstruction()
         {
             return View();

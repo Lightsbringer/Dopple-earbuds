@@ -7,6 +7,6 @@ namespace WebApplication3.Models
 {
     public class Report
     {
-        public string
+     //   public string
     }
 }
