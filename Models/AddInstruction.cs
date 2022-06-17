@@ -9,10 +9,10 @@ namespace WebApplication3.Models
     public class AddInstruction
     {
 
-        public String InstructionId { get; set; }
-        public int ImagePath { get; set; }
-        public String Description { get; set; }
-        public String StationId { get; set; }
+        public string InstructionId { get; set; }
+        public string ImagePath { get; set; }
+        public string Description { get; set; }
+        public string StationId { get; set; }
         public DateTime Time { get; set; }
         
     }

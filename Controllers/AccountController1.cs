@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3.Models;
+using WebApplication3;
 
 namespace WebApplication3.Controllers
 {
@@ -15,15 +16,35 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        public IActionResult Login(UserLogin userLogin)
+        public ActionResult Login()
         {
-            if(userLogin.UserID == "insert user id here" && userLogin.Password == "insert user password here")
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(UserLogin model)
+        {
+            if(ModelState.IsValid)
             {
-                return View("UserPage", userLogin);
+                var api = new ApiHandler();
+                var requestingUser = api.GetOperatorFromApiByOperatorId(model.UserID);
+                //looking if the userId is in the database
+                int userId = Convert.ToInt32(requestingUser.OperatorId);
+                if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization=="Admin")
+                {
+                    return RedirectToAction("AddInstruction");
+                }
+                else if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization=="Operator")
+                {
+                    return RedirectToAction("UserPage");
+                }
+                {
+                    return RedirectToAction("Login");
+                }
+                
             }
             else
             {
-                return View("Login", userLogin);
+                return RedirectToAction("Login");
             }
             
         }

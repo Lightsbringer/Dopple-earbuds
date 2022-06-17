@@ -15,5 +15,7 @@ namespace WebApplication3.APIDTOs
 
         public virtual OperatorpositionEntity Operatorposition { get; set; }
         public virtual Testresult Testresult { get; set; }
+
+       
     }
 }

@@ -23,11 +23,13 @@ namespace WebApplication3
                     {
                         var readResult = result.Content.ReadAsAsync<OperatorEntity>();
                         readResult.Wait();
-
+                        _operator = readResult.Result;
                     }
 
                 });
+                return _operator;
             }
+            
             catch (Exception ex)
             {
 
