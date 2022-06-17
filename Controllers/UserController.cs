@@ -17,7 +17,7 @@ namespace WebApplication3.Controllers
         {
             
             var api = new ApiHandler();
-            var station = api.GetStationFromAPI(_stationEntity.StationId);
+            var station = api.GetStationFromApiByStationId(_stationEntity.StationId);
             var instruction = api.GetInstructionsFromApi(_instruction.StationId);
             UserPage userPage = new UserPage(station,instruction,_operator);
             

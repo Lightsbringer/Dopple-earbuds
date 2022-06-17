@@ -9,7 +9,32 @@ namespace WebApplication3
 {
     public class ApiHandler
     {
-        public InstructionEntity GetInstructionsFromApi(int id)
+        public OperatorEntity GetOperatorFromApiByOperatorId(int id)
+        {
+            try
+            {
+                var _operator = new OperatorEntity();
+                var client = new HttpClient();
+                var getDataTask = client.GetAsync("https://localhost:44388/api/Operator/GetOperatorById.json?Id=" + id)
+                .ContinueWith(response =>
+                {
+                    var result = response.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readResult = result.Content.ReadAsAsync<OperatorEntity>();
+                        readResult.Wait();
+
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public InstructionEntity GetInstructionsFromApiByStationId(int id)
         {
 
             try
@@ -38,7 +63,7 @@ namespace WebApplication3
 
         }
 
-        public StationEntity GetStationFromAPI(int id)
+        public StationEntity GetStationFromApiByStationId(int id)
         {
             try
             {

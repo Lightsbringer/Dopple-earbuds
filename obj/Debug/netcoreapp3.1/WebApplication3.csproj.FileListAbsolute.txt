@@ -132,3 +132,47 @@ C:\Users\Jerem\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp
 C:\Users\Jerem\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp3.1\WebApplication3.csproj.AssemblyReference.cache
 C:\Users\Jerem\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp3.1\WebApplication3.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Jerem\source\repos\WebApplication3\WebApplication3\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebApplication3.styles.css
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.csproj.AssemblyReference.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.GeneratedMSBuildEditorConfig.editorconfig
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.AssemblyInfoInputs.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.AssemblyInfo.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.csproj.CoreCompileInputs.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.MvcApplicationPartsAssemblyInfo.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.RazorAssemblyInfo.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.RazorAssemblyInfo.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication3.StaticWebAssets.Manifest.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication3.StaticWebAssets.xml
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebApplication3.styles.css
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.TagHelpers.input.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.TagHelpers.output.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.RazorCoreGenerate.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Pages\_Layout.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\AccountController1\Login.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\AccountController1\Register.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AddInstruction.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AddStation.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateUser.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Order.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Report.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\StationManager.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\StationReport.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Admin\UpdateInstruction.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminPageLayout.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UserPageLayout.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\User\UserPage.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.RazorTargetAssemblyInfo.cache
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.RazorTargetAssemblyInfo.cs
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.dll
+E:\y2\y2 again\MMP\Dopple-earbuds\obj\Debug\netcoreapp3.1\WebApplication3.pdb
