@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oV9lALGpE5HliUhbqzOkL3myRH/EjUtXqi62vkCC96vyOJSNARKOmR5YTtgFCHGBCmykk24HTNOF74Bz5005MQ==",
+  "dgSpecHash": "50icEI3/dYOHALT5y9zOZYCrtc/AjFrbp3B0i7GtuSd6AUpUkTs2MnCF0RsOoAsufuOlVuXM30A1vJdTttADcg==",
   "success": true,
-  "projectFilePath": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\WebApplication3.csproj",
+  "projectFilePath": "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\WebApplication3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jerem\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\Jerem\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

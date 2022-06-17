@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using WebApplication3;
 using WebApplication3.APIDTOs;
@@ -13,17 +14,17 @@ namespace WebApplication3.Controllers
 
 
        
-        //this is for the input 
-        //[]
-        public IActionResult UserPage(InstructionEntity _instruction, OperatorEntity _operator,StationEntity _stationEntity)
-        {
+        [HttpPost]
+        public IActionResult UserPage(UserPage model)
+         {
             
             var api = new ApiHandler();
-            var station = api.GetStationFromApiByStationId(_stationEntity.StationId);
-            var instruction = api.GetInstructionsFromApiByStationId(_instruction.StationId);
-            UserPage userPage = new UserPage(station,instruction,_operator);
+            var instruction = api.GetInstructionsFromApiByStationId(model.StationId);
+            model.Description = instruction.Description;
+            model.StationId = instruction.StationId;
+            model.InstructionId = Convert.ToInt32(instruction.InstructionId);
             
-            return View("UserPage", userPage);
+            return View("UserPage", model);
         }
         public IActionResult UserPage()
         {

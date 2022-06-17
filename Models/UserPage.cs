@@ -8,34 +8,12 @@ namespace WebApplication3.Models
 {
     public class UserPage
     {
-        public StationEntity station;
-        public InstructionEntity instruction;
-        public OperatorEntity @operator;
+        public int StationId { get; set; }
+        public string ImagePath { get; set; }
+        public string OperatorId { get; set; }
+        public string Description { get; set; }
+        public int InstructionId { get; set; }
 
-        public UserPage(StationEntity station, InstructionEntity instruction, OperatorEntity @operator)
-        {
-            this.station = station;
-            this.instruction = instruction;
-            this.@operator = @operator;
-        }
-    }
-    
-        public class instruction
-    {
-        public string instructionId { get; set; }
-        public string description { get; set; }
-        public string imagePath { get; set; }
-        public int stationId { get; set; }
-    }
-    public class station
-    {
-        public int stationId { get; set; }
-        public string statusStation { get; set; }
 
     }
-    public class Operator
-    {
-        public int operatorId { get; set; }
-    }
-
 }

@@ -18,7 +18,7 @@ namespace WebApplication3.APIDTOs
         public int StationId { get; set; }
         public string StatusStation { get; set; }
 
-        public virtual instruction Instruction { get; set; }
+        public virtual InstructionEntity Instruction { get; set; }
         public virtual ICollection<Carrier> Carriers { get; set; }
         public virtual ICollection<OperatorpositionEntity> Operatorpositions { get; set; }
     }

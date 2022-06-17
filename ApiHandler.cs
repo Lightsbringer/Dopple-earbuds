@@ -16,7 +16,7 @@ namespace WebApplication3
             {
                 var _operator = new OperatorEntity();
                 var client = new HttpClient();
-                var getDataTask = client.GetAsync("https://localhost:44388/api/Operator/GetOperatorById.json?Id=" + id)
+                var getDataTask = client.GetAsync("https://localhost:7267/api/Operator/GetOperatorById.json?Id=" + id)
                 .ContinueWith(response =>
                 {
                     var result = response.Result;
@@ -25,9 +25,11 @@ namespace WebApplication3
                         var readResult = result.Content.ReadAsAsync<OperatorEntity>();
                         readResult.Wait();
                         _operator = readResult.Result;
+                        
                     }
-
+                
                 });
+                getDataTask.Wait();
                 return _operator;
             }
             
@@ -44,7 +46,7 @@ namespace WebApplication3
             {
                 InstructionEntity instruction = new InstructionEntity();
                 var client = new HttpClient();
-                var getDataTask = client.GetAsync("https://localhost:44388/api/Instruction/GetInstructionById.json?Id=" + id)
+                var getDataTask = client.GetAsync("https://localhost:7267/api/Instruction/GetInstructionById.json?Id=" + id)
                     .ContinueWith(response =>
                     {
                         var result = response.Result;
@@ -56,6 +58,7 @@ namespace WebApplication3
                             instruction = readResult.Result;
                         }
                     });
+                getDataTask.Wait();
                 return instruction;
 
             }
@@ -72,7 +75,7 @@ namespace WebApplication3
             {
                 StationEntity station = new StationEntity();
                 var client = new HttpClient();
-                var getDataTask = client.GetAsync("https://localhost:44388/api/Station/GetStationById.json?Id=" + id)
+                var getDataTask = client.GetAsync("https://localhost:7267/api/Station/GetStationById.json?Id=" + id)
                     .ContinueWith(response =>
                     {
                         var result = response.Result;

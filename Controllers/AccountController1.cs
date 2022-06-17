@@ -28,14 +28,16 @@ namespace WebApplication3.Controllers
                 var api = new ApiHandler();
                 var requestingUser = api.GetOperatorFromApiByOperatorId(model.UserID);
                 //looking if the userId is in the database
-                int userId = Convert.ToInt32(requestingUser.OperatorId);
-                if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization=="Admin")
+             
+                    int userId = Convert.ToInt32(requestingUser.OperatorId); 
+              
+                if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization.ToLower() == "admin")
                 {
                     return RedirectToAction("AddInstruction");
                 }
-                else if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization=="Operator")
+                else if (model.UserID == userId && model.Password == requestingUser.Password &&requestingUser.Authorization.ToLower() == "operator")
                 {
-                    return RedirectToAction("UserPage");
+                    return View("UserPage");
                 }
                 {
                     return RedirectToAction("Login");
@@ -48,7 +50,18 @@ namespace WebApplication3.Controllers
             }
             
         }
+        [HttpPost]
+        public IActionResult UserPage(UserPage model)
+        {
 
+            var api = new ApiHandler();
+            var instruction = api.GetInstructionsFromApiByStationId(model.StationId);
+            model.Description = instruction.Description;
+            model.StationId = instruction.StationId;
+            model.InstructionId = Convert.ToInt32(instruction.InstructionId);
+
+            return View("UserPage", model);
+        }
         public IActionResult Index()
         {
             return View();

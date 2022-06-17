@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\WebApplication3.csproj": {}
+    "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\WebApplication3.csproj": {}
   },
   "projects": {
-    "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\WebApplication3.csproj": {
+    "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\WebApplication3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\WebApplication3.csproj",
+        "projectUniqueName": "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\WebApplication3.csproj",
         "projectName": "WebApplication3",
-        "projectPath": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\WebApplication3.csproj",
+        "projectPath": "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\WebApplication3.csproj",
         "packagesPath": "C:\\Users\\Jerem\\.nuget\\packages\\",
-        "outputPath": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\obj\\",
+        "outputPath": "C:\\Users\\Jerem\\Desktop\\New folder\\Dopple-earbuds\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
