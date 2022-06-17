@@ -18,7 +18,7 @@ namespace DoppleApi.Controllers
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
         }
-        //get carrier by ID and then format either XML or  JSON
+
         [HttpGet("GetCarrierById.{format}"), FormatFilter]
         public async Task<ActionResult<CarrierModel>> GetOrderById(String Id)
         {
