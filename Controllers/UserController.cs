@@ -1,30 +1,33 @@
-﻿using DoppleMessages;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using WebApplication3;
+using WebApplication3.APIDTOs;
 using WebApplication3.Models;
 
-namespace SignUp.Controllers
+namespace WebApplication3.Controllers
 {
     public class UserController : Controller
       
     {
         List<UserPage> userdata = new List<UserPage>();
 
+        //this is for the input 
+        //[]
+        public IActionResult UserPage(InstructionEntity _instruction, OperatorEntity _operator,StationEntity _stationEntity)
+        {
+            
+            var api = new ApiHandler();
+            var station = api.GetStationFromAPI(_stationEntity.StationId);
+            var instruction = api.GetInstructionsFromApi(_instruction.StationId);
+            UserPage userPage = new UserPage(station,instruction,_operator);
+            
+            return View("UserPage", userPage);
+        }
         public IActionResult UserPage()
         {
-            var api = new ApiHandler();
-            var station = api.GetStationFromAPI();
-            List<InstructionEntity> instructions = api.GetInstructionsFromApi();
-            return View(instructions);
+            return View();
         }
-
+        
             public IActionResult Index()
         {
 

@@ -1,35 +1,35 @@
-﻿using DoppleMessages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WebApplication3.APIDTOs;
 
 namespace WebApplication3
 {
     public class ApiHandler
     {
-        public List<InstructionEntity> GetInstructionsFromApi()
+        public InstructionEntity GetInstructionsFromApi(int id)
         {
 
             try
             {
-                var resultList = new List<InstructionEntity>();
+                InstructionEntity instruction = new InstructionEntity();
                 var client = new HttpClient();
-                var getDataTask = client.GetAsync("https://localhost:44388/GetInstructionById.json?Id=6969")
+                var getDataTask = client.GetAsync("https://localhost:44388/api/Instruction/GetInstructionById.json?Id=" + id)
                     .ContinueWith(response =>
                     {
                         var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var readResult = result.Content.ReadAsAsync<List<InstructionEntity>>();
+                            var readResult = result.Content.ReadAsAsync<InstructionEntity>();
                             readResult.Wait();
-                                //result
-                                resultList = readResult.Result;
+                            //result
+                            instruction = readResult.Result;
                         }
                     });
-                getDataTask.Wait();
-                return resultList;
+                return instruction;
+
             }
             catch (Exception ex)
             {
@@ -38,33 +38,32 @@ namespace WebApplication3
 
         }
 
-    }
-    public List<StationEntity> GetStationFromAPI()
-    {
-        try
+        public StationEntity GetStationFromAPI(int id)
         {
-            var resultList = new List<StationEntity>();
-            var client = new HttpClient();
-            var getDataTask = client.GetAsync("https://localhost:44388/GetInstructionById.json?Id=6969")
-                .ContinueWith(response =>
-                {
-                    var result = response.Result;
-                    if (result.IsSuccessStatusCode)
+            try
+            {
+                StationEntity station = new StationEntity();
+                var client = new HttpClient();
+                var getDataTask = client.GetAsync("https://localhost:44388/api/Station/GetStationById.json?Id=" + id)
+                    .ContinueWith(response =>
                     {
-                        var readResult = result.Content.ReadAsAsync<List<InstructionEntity>>();
-                        readResult.Wait();
-                            //result
-                            resultList = readResult.Result;
-                    }
-                });
-            getDataTask.Wait();
-            return resultList;
-        }
-        catch (Exception ex)
-        {
-            throw ex;
-        }
+                        var result = response.Result;
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var readResult = result.Content.ReadAsAsync<StationEntity>();
+                            readResult.Wait();
+                            station = readResult.Result;
+                        }
+                    });
+                getDataTask.Wait();
+                return station;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
+        }
     }
 }
-}
+

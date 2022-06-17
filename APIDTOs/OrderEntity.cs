@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DoppleMessages   
+namespace WebApplication3.APIDTOs
 {
-    public partial class Order
+    public partial class OrderEntity
     {
-        public Order()
+        public OrderEntity()
         {
             Carriers = new HashSet<Carrier>();
-            Tests = new HashSet<Test>();
+            Tests = new HashSet<TestEntity>();
         }
 
         public string OrderId { get; set; }
@@ -22,6 +22,6 @@ namespace DoppleMessages
         public string StatusOrder { get; set; }
 
         public virtual ICollection<Carrier> Carriers { get; set; }
-        public virtual ICollection<Test> Tests { get; set; }
+        public virtual ICollection<TestEntity> Tests { get; set; }
     }
 }

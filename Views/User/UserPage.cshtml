@@ -1,28 +1,24 @@
-﻿@model List<DoppleMessages.InstructionEntity>
+﻿@model WebApplication3.Models.UserPage
 @{
     ViewData["Title"] = "UserPage";
     Layout = "~/Views/Shared/_UserPageLayout.cshtml";
 }
-int ordernumber;
+
 <div class="container">
     <div class="row align-items-start">
         <div class="col border ">
             <h3>ORDER</h3>
-            <span>@Html.Display()</span>
+            <span>1</span>
         </div>
         <div class="col border">
             <h3>WORKSTATION</h3>
-            <span>Station2</span>
+            <span>@Html.DisplayFor(model => model.station.StationId)</span>
         </div>
         <div class="col border">
             <h3>RESOURCE</h3>
-            <span>Operator1</span>
+            <span>@Html.DisplayFor(model => model.@operator.OperatorId)</span>
         </div>
-        <div class="col border">
-            <h3>TIME</h3>
-            <span>38.6 S</span>
-        </div>
-    </div>
+            </div>
 </div><br />
 
 <div class="container">
@@ -37,13 +33,13 @@ int ordernumber;
                         </div>
                         <div class="col">
                             <h6>Description</h6>
-                            <p>Dispense glue on the Emodule for fixation of the faceplate</p>
+                            <p>@Html.DisplayFor(model => model.instruction.Description)</p>
                         </div>
                     </div>
                 </div>
                 </div>
             <div class="col border">
-                <img src="~/images/earbud1.jpg" alt="picture" class="img-fluid rounded" />
+                <img src="@Html.DisplayFor(model =>model.instruction.ImagePath)" alt="picture" class="img-fluid rounded" />
             </div>
         </div>
  </div>

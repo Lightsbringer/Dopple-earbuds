@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SignUp.View_Model
+namespace WebApplication3.View_Model
 {
     public class UserLogin
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SignUp.Models;
+using WebApplication3.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,18 +10,17 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace SignUp.Controllers
+namespace WebApplication3.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        string baseUrl = "https://localhost:44388/";
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
            return View();
         }

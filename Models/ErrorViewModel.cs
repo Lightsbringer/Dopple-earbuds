@@ -1,6 +1,6 @@
 using System;
 
-namespace SignUp.Models
+namespace WebApplication3.Models
 {
     public class ErrorViewModel
     {

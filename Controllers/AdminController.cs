@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3.Models;
 
-namespace SignUp.Controllers
+namespace WebApplication3.Controllers
 {
     public class AdminController : Controller
     {
@@ -39,11 +39,7 @@ namespace SignUp.Controllers
         }
         public IActionResult StationReport()
         {
-            List<StationReport> stations = new List<StationReport>();
-            stations.Add(new StationReport { Station = 1, Status = "Active", UserLoggedIn = true });
-            stations.Add(new StationReport { Station = 2, Status = "Inactive", UserLoggedIn = false });
-            stations.Add(new StationReport { Station = 3, Status = "Inactive", UserLoggedIn = true });
-            return View(stations);
+            return View();
         }
     }
 }

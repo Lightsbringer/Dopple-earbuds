@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3;
 
-namespace SignUp.Models
+namespace WebApplication3.Models
 {
     public class AddInstruction
     {

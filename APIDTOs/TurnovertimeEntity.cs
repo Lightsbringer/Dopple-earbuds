@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DoppleMessages
+namespace WebApplication3.APIDTOs
 {
     public partial class Turnovertime
     {
@@ -13,7 +13,7 @@ namespace DoppleMessages
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
 
-        public virtual Order Order { get; set; }
-        public virtual Station Station { get; set; }
+        public virtual OrderEntity Order { get; set; }
+        public virtual StationEntity Station { get; set; }
     }
 }

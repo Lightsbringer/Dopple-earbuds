@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
-namespace DoppleMessages
+namespace WebApplication3.APIDTOs
 
 {
     public partial class InstructionEntity
@@ -16,7 +16,7 @@ namespace DoppleMessages
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public int StationId { get; set; }
-        public virtual Station Station { get; set; }
+        public virtual StationEntity Station { get; set; }
     }
-   
+
 }

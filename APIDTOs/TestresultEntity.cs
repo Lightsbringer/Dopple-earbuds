@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DoppleMessages
+namespace WebApplication3.APIDTOs
 {
     public partial class Testresult
     {
@@ -12,7 +12,7 @@ namespace DoppleMessages
         public string Reason { get; set; }
         public string OperatorCompanyId { get; set; }
 
-        public virtual Operator OperatorCompany { get; set; }
-        public virtual Test Test { get; set; }
+        public virtual OperatorEntity OperatorCompany { get; set; }
+        public virtual TestEntity Test { get; set; }
     }
 }
