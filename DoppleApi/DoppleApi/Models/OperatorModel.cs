@@ -6,7 +6,7 @@ namespace DoppleApi.Models
     {
         [Key]
         public string OperatorId { get; set; }
-        [Required]
+        [Required] 
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }

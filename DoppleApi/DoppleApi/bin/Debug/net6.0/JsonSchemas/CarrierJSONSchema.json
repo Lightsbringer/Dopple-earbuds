@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagId": {
+      "type": "string"
+    },
+    "orderIdO": {
+      "type": "string"
+    },
+    "stationId": {
+      "type": "integer"
+    },
+    "statusCarrier": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "tagId",
+    "orderIdO",
+    "stationId",
+    "statusCarrier"
+  ]
+}

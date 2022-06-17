@@ -12,10 +12,11 @@ namespace DoppleApi.Models
         public string Description { get; set; }
         [Required]
         public string ImagePath { get; set; }
-        public int StationId { get; set; }
         [Required]
         [ForeignKey("StationId")]
-        public virtual StationModel Station { get; set; }
+        public int StationId { get; set; }
+       
+        //public virtual StationModel Station { get; set; }
 
     }
 }

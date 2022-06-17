@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 namespace DoppleApi.Controllers
 {
-
+   
     public class TestResultController : Controller
     {
 
@@ -43,7 +43,7 @@ namespace DoppleApi.Controllers
         {
 
 
-            // get existing subject with Id=202
+            
             Test test = DoppleDB.Tests.FirstOrDefault(s => s.TestId == TestResult.TestId);
             Operator opr = DoppleDB.Operators.FirstOrDefault(s => s.OperatorId == TestResult.OperatorCompanyId);
             var entity = new Testresult()
@@ -62,13 +62,21 @@ namespace DoppleApi.Controllers
 
         // delete test result by id and operatorID in either XML or  JSON format
         [HttpDelete("DeleteTestResult/{Id}.{format}"), FormatFilter]
-        public async Task<HttpStatusCode> DeleteUser(int Id, String operatorId)
-        {
+        public async Task<HttpStatusCode> DeleteUser(int Id, String operatorId) 
+        {/// <summary>
+///  This class performs an important function.
+/// </summary>
             var entity = new Testresult()
             {
                 TestId = Id,
+                /// <summary>
+                ///  This class performs an important function.
+                /// </summary>
                 OperatorCompanyId = operatorId,
             };
+            /// <summary>
+            ///  This class performs an important function.
+            /// </summary>
             DoppleDB.Testresults.Attach(entity);
             DoppleDB.Testresults.Remove(entity);
             await DoppleDB.SaveChangesAsync();

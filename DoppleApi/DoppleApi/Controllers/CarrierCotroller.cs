@@ -5,13 +5,15 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 namespace DoppleApi.Controllers
 {
-   
+    [ApiController]
+    [Route("api/[controller]")]
     public class CarrierController : Controller
     {
 
-
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
-
+        //this is used for validation not yet fully working
+        //PathController pathController = new();
+        //JsonDraft007 jsonDraft007 = new JsonDraft007();
         public CarrierController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -34,6 +36,9 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                //This is used for validation, not yet fully working
+                //var randkind = pathController.GetUri();
+               // jsonDraft007.random(randkind, Id);
                 return Carrier;
             }
         }

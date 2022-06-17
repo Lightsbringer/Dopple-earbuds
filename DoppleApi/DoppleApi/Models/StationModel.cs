@@ -7,6 +7,7 @@ public class StationModel
 {
     [Key]
     public int StationId { get; set; }
+    [Required]
     public string StatusStation { get; set; }
 }
 

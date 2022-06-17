@@ -7,7 +7,8 @@ using System.Net;
 
 namespace DoppleApi.Controllers
 {
-
+    [ApiController]
+    [Route("api/[controller]")]
     public class OperatorPositionController : Controller
     {
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jjLvnNGMLNGPQqDpBMDtTJXwCRafSAn0gdK5k0JxTVuhQzksupaWVD7dVibUu8OpNyE2FGSP1GFCJkmgakvcHg==",
+  "dgSpecHash": "vUDwEJaIVBCOmjTzbOZvhFMkFC8lpzNABzCd3Um/ZsSZcXoruP/fgCGsdJtye1xjtVd/i3+sVQooKh0iawHEaQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\hunte\\source\\repos\\DoppleApi\\DoppleApi\\DoppleApi.csproj",
   "expectedPackageFiles": [
@@ -104,6 +104,7 @@
     "C:\\Users\\hunte\\.nuget\\packages\\mysql.entityframeworkcore\\6.0.0\\mysql.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\hunte\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\hunte\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\hunte\\.nuget\\packages\\newtonsoft.json.schema\\3.0.15-beta1\\newtonsoft.json.schema.3.0.15-beta1.nupkg.sha512",
     "C:\\Users\\hunte\\.nuget\\packages\\nuget.common\\5.11.0\\nuget.common.5.11.0.nupkg.sha512",
     "C:\\Users\\hunte\\.nuget\\packages\\nuget.configuration\\5.11.0\\nuget.configuration.5.11.0.nupkg.sha512",
     "C:\\Users\\hunte\\.nuget\\packages\\nuget.dependencyresolver.core\\5.11.0\\nuget.dependencyresolver.core.5.11.0.nupkg.sha512",

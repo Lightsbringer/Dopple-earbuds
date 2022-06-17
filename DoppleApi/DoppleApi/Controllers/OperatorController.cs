@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 namespace DoppleApi.Controllers
 {
-
+    [ApiController]
+    [Route("api/[controller]")]
     public class OperatorController : Controller
     {
 

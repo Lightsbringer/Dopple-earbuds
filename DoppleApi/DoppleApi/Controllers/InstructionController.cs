@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 namespace DoppleApi.Controllers
 {
-
+    [ApiController]
+    [Route("api/[controller]")]
     public class InstructionController : Controller
     {
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
@@ -35,6 +36,7 @@ namespace DoppleApi.Controllers
 
             }
         }
+
         // insert instruction into the database in either XML or  JSON format
         [HttpPost("InsertInstruction.{format}"), FormatFilter]
         public async Task<HttpStatusCode> InsertUser(InstructionModel Instructions)

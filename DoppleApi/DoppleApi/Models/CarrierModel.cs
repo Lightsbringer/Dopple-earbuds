@@ -5,6 +5,9 @@ namespace DoppleApi.Models
     public class CarrierModel
     {
         [Key]
+        /// <summary>
+        /// cool andgood
+        /// </summary>
         public string TagId { get; set; }
         [Required]
         public string OrderIdO { get; set; }

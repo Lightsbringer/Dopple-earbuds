@@ -1926,6 +1926,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Newtonsoft.Json.Schema/3.0.15-beta1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
+        }
+      },
       "NuGet.Common/5.11.0": {
         "type": "package",
         "dependencies": {
@@ -6499,6 +6511,29 @@
         "packageIcon.png"
       ]
     },
+    "Newtonsoft.Json.Schema/3.0.15-beta1": {
+      "sha512": "Q3eYKx3auJnn3cEVadTPHROodH0E0m297ipjUsR4hmnIbKZQ9kEPjgDdt/rwl6B1rEKVgTgZ2pRULDd4iYJXqQ==",
+      "type": "package",
+      "path": "newtonsoft.json.schema/3.0.15-beta1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net35/Newtonsoft.Json.Schema.dll",
+        "lib/net35/Newtonsoft.Json.Schema.xml",
+        "lib/net40/Newtonsoft.Json.Schema.dll",
+        "lib/net40/Newtonsoft.Json.Schema.xml",
+        "lib/net45/Newtonsoft.Json.Schema.dll",
+        "lib/net45/Newtonsoft.Json.Schema.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Schema.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Schema.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.Schema.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.Schema.xml",
+        "newtonsoft.json.schema.3.0.15-beta1.nupkg.sha512",
+        "newtonsoft.json.schema.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "NuGet.Common/5.11.0": {
       "sha512": "WCHexQBfSqBDRqP3PSDSUw7YM+PwuvMHGAkT/sXI5UHze4T41yLE+VB/km2Fe0z9y3m2mudcr2djFZezivjMJw==",
       "type": "package",
@@ -10838,6 +10873,7 @@
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.15.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.5",
       "MySql.EntityFrameworkCore >= 6.0.0",
+      "Newtonsoft.Json.Schema >= 3.0.15-beta1",
       "Swashbuckle.AspNetCore >= 6.3.1"
     ]
   },
@@ -10916,6 +10952,10 @@
           "MySql.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "Newtonsoft.Json.Schema": {
+            "target": "Package",
+            "version": "[3.0.15-beta1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

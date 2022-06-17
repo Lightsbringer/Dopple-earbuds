@@ -6,7 +6,8 @@ using System.Net;
 
 namespace DoppleApi.Controllers
 {
-
+    [ApiController]
+    [Route("api/[controller]")]
     public class TestController : Controller
     {
 
