@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tagId": {
+      "type": "string"
+    },
+    "testId": {
+      "type": "integer"
+    },
+    "orderId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "tagId",
+    "testId",
+    "orderId"
+  ]
+}
