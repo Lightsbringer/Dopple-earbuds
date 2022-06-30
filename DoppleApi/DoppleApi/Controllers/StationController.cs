@@ -125,7 +125,6 @@ namespace DoppleApi.Controllers
         public async Task<HttpStatusCode> UpdateOrder(StationModel Station)
         {
             var entity = new Station();
-            entity.StationId = Station.StationId;
             entity.StatusStation = Station.StatusStation;
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;

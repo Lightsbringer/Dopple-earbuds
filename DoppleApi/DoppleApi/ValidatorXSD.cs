@@ -29,10 +29,14 @@ namespace DoppleApi
                 // define settings that will be used to read the XML file
                 XmlReaderSettings settings = new XmlReaderSettings();
                 // xsd
-                settings.ValidationType = ValidationType.Schema;
-                settings.ValidationFlags |= System.Xml.Schema.XmlSchemaValidationFlags.ProcessSchemaLocation;
-                settings.ValidationFlags |= System.Xml.Schema.XmlSchemaValidationFlags.ReportValidationWarnings;
-                settings.ValidationEventHandler += new System.Xml.Schema.ValidationEventHandler(this.ValidationEventHandler);
+                //settings.ValidationType = ValidationType.Schema;
+                //settings.ValidationFlags |= System.Xml.Schema.XmlSchemaValidationFlags.ProcessSchemaLocation;
+                //settings.ValidationFlags |= System.Xml.Schema.XmlSchemaValidationFlags.ReportValidationWarnings;
+                //settings.ValidationEventHandler += new System.Xml.Schema.ValidationEventHandler(this.ValidationEventHandler);
+                XmlReaderSettings booksSettings = new XmlReaderSettings();
+                booksSettings.Schemas.Add("http://www.contoso.com/books", "books.xsd");
+                booksSettings.ValidationType = ValidationType.Schema;
+                booksSettings.ValidationEventHandler += new ValidationEventHandler(this.ValidationEventHandler);
                 //validate the fie with the given settings
                 xmlReader = XmlReader.Create(fileName, settings);
 
@@ -60,7 +64,7 @@ namespace DoppleApi
         public void ValidationEventHandler(object sender, ValidationEventArgs args)
         {
             Console.WriteLine("/r/n/tValidation Error:" + args.Message);
-            // LblStatus.Text = "Validation failed, message:" + args.Message;
+          
             throw new Exception("Validation failed, message:" + args.Message);
 
         }

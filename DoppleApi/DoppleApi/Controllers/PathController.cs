@@ -14,8 +14,15 @@ namespace DoppleApi.Controllers
            // var message1 = HttpContext.Session.GetString;
             IHttpContextAccessor httpContextAccessor = new HttpContextAccessor();
             var ok = httpContextAccessor.HttpContext.Request.Path.Value;
-            //Console.WriteLine(ok);
-            return ok;
+
+            var ok2 = httpContextAccessor.HttpContext.Request.QueryString;
+            var ok3 = ok + ok2;
+
+
+           // Console.WriteLine(ok3);
+
+            
+            return ok3;
 
         }
     }

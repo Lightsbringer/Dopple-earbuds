@@ -14,10 +14,10 @@ namespace DoppleApi
         //private JSchema schema = new JSchema();
         //public String results = "";        
 
-
-        public async void random(String methodPath, String inputData)
+        JSchema schema = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\TurnOverTimeJSONSchema.json"));
+        public async void random(String methodPath)
         {
-            JSchema schema1 = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\StationJSONSchema.json"));
+            
             //using (StreamReader file = File.OpenText(@"C:\\Users\\hunte\\source\\repos\\DoppleApi\\DoppleApi\\StationJSONSchema.json"))
             //using (JsonTextReader reader = new(file))
             //{
@@ -46,36 +46,51 @@ namespace DoppleApi
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage getData = await client.GetAsync(methodPath + "?Id=" + inputData);
+                HttpResponseMessage getData = await client.GetAsync(methodPath);
                 IList<string> messages = new List<string>();
                 SchemaValidationEventHandler validationEventHandler = (sender, args) => messages.Add(args.Message);
                 if (getData.IsSuccessStatusCode)
                 {
                     String results = getData.Content.ReadAsStringAsync().Result;
                     JToken result = JToken.Parse(results);
-                    // bool valid = result.IsValid(schema1, out messages);
-                    result.Validate(schema1, validationEventHandler);
-                    //Console.WriteLine(valid);
-                   
-                        foreach (string message in messages)
-                        {
-                            Console.WriteLine(message);
-                        }
-                    
-                }
-        
-                //JArray resultArr = JArray.Parse(results);
-                
-            }
-            
+                    result.Validate(schema, validationEventHandler);
+                    bool valid = result.IsValid(schema, out messages);
 
+                    if (valid == true)
+                    {
+                        Console.WriteLine("dick");
+                    }
+                    else if (valid == false)
+                    {
+                        throw new JSchemaValidationException("The schema is not the same as the one provided from the API" + messages[0]);
+                        
+
+                    }
+
+                    // Console.WriteLine(result.Validate(schema1, validationEventHandler));
+
+                    //foreach (string message in messages)
+                    //    {
+                    //        Console.WriteLine(message);
+                    //    }
+
+                }
+
+
+                //JArray resultArr = JArray.Parse(results);
+
+            }
+
+            /*
+            https://localhost:44388/api/Carrier/GetAllCarriers.xml
+             */
 
             // true
         }
         public JSchema jSchemaPath(String path)
         {
-            JSchema schema = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\StationJSONSchema.json"));
-            //String path;
+           // JSchema schema = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\StationJSONSchema.json"));
+            
             switch (path)
             {
                 case "Carrier":

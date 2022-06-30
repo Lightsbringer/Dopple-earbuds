@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen((c =>
     {
         Version = "v1",
         Title = "My API",
-        Description = "My API description for blah blah"
+        Description = "API FOR DOPPLE",
     });
 }));
 
