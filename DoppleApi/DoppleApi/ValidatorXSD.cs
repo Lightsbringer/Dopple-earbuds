@@ -7,7 +7,7 @@ namespace DoppleApi
     //this validator is used to compare XSD schemas with the actual XML
     public class ValidatorXSD
     {
-
+        /*
         String fileName = "C:\\Users\\hunte\\source\\repos\\DoppleApi\\DoppleApi\\StationXmlSchema.xml";
         public void validate_click(object sender, EventArgs e)
         {
@@ -106,3 +106,5 @@ namespace DoppleApi
   </ xs:element >
 </ xs:schema >
     */
+    }
+}

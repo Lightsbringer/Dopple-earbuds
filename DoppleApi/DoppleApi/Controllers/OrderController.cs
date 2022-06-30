@@ -11,6 +11,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "Order";
 
         public OrderController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
@@ -36,6 +38,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return Orders;
             }
         }
@@ -53,6 +57,8 @@ namespace DoppleApi.Controllers
                 CradleColor = Order.CradleColor,
                 StatusOrder = Order.StatusOrder,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Orders.Add(entity);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.Created;
@@ -65,6 +71,8 @@ namespace DoppleApi.Controllers
             {
                 OrderId = Id,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Orders.Attach(entity);
             DoppleDB.Orders.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -75,19 +83,20 @@ namespace DoppleApi.Controllers
         [HttpPut("UpdateOrder.{format}"), FormatFilter]
         public async Task<HttpStatusCode> UpdateOrder(OrderModel Order)
         {
-            var entity = new Order();
+            var entity = await DoppleDB.Orders.FirstOrDefaultAsync(s => s.OrderId == Order.OrderId);
 
             entity.OrderId = Order.OrderId;
-            entity.OrderDate = Order.OrderDate; ;
+            entity.OrderDate = Order.OrderDate;
             entity.FaceplateText = Order.FaceplateText;
             entity.EarshellSize = Order.EarshellSize;
             entity.EarshellColor = Order.EarshellColor;
             entity.CradleColor = Order.CradleColor;
             entity.StatusOrder = Order.StatusOrder;
-
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
+
         }
 
     }

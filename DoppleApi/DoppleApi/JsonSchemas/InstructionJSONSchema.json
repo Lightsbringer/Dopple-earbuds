@@ -2,23 +2,23 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "operatorId": {
+    "instructionId": {
       "type": "string"
     },
-    "username": {
+    "description": {
       "type": "string"
     },
-    "password": {
+    "imagePath": {
       "type": "string"
     },
-    "authorization": {
-      "type": "string"
+    "stationId": {
+      "type": "integer"
     }
   },
   "required": [
-    "operatorId",
-    "username",
-    "password",
-    "authorization"
+    "instructionId",
+    "description",
+    "imagePath",
+    "stationId"
   ]
 }

@@ -10,39 +10,18 @@ namespace DoppleApi
 {
     public class JsonDraft007
     {
-        //private JSchema schema2 = new JSchema();
-        //private JSchema schema = new JSchema();
-        //public String results = "";        
-
+     
+        //default schema
         JSchema schema = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\TurnOverTimeJSONSchema.json"));
-        public async void random(String methodPath)
+        public async void validateJson(String methodPath)
         {
-            
-            //using (StreamReader file = File.OpenText(@"C:\\Users\\hunte\\source\\repos\\DoppleApi\\DoppleApi\\StationJSONSchema.json"))
-            //using (JsonTextReader reader = new(file))
-            //{
-            //    JSchema schema2 = JSchema.Load(reader);
-            //}
-            //JSchema schema = JSchema.Parse(schema1);
-
-            /*JObject person = JObject.Parse(@"{
-  'stationId': '11',
-  'hobbies': ['.NET', 'Blogging', 'Reading', 'Xbox', 'LOLCATS']
-}"
-            );*/
+          
             using (var client = new HttpClient())
             {
-                // HttpContext Context = HttpContext.Current;
-                // String baseUrl = HttpContext.Request.Url.AbsoluteUri;
-                //  string surl = string.Format("{0}://{1}",
-                //   HttpContext.Current.Request.Url.Scheme);
-                //string sPath = new Uri(HttpContext.AbsoluteUri).OriginalString; System.Web.HttpContext.Current.Request.Url.AbsolutePath;
-                //sPath = sPath.Replace("http://", "");
-                //System.IO.FileInfo oInfo = new System.IO.FileInfo(sPath);
-                //string sRet = oInfo.Name;
-                //Response.Write(sPath.Replace(sRet, ""));
-
-                String baseUrl = "https://localhost:7267";
+                IHttpContextAccessor accessor = new HttpContextAccessor();
+                var host = accessor.HttpContext.Request.Host;
+                String baseUrl = "https://" + host;
+               
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -58,38 +37,25 @@ namespace DoppleApi
 
                     if (valid == true)
                     {
-                        Console.WriteLine("dick");
+                        //display "schema validated succesfully in the future.
+                        Console.WriteLine("sucess");
                     }
                     else if (valid == false)
                     {
+                        
                         throw new JSchemaValidationException("The schema is not the same as the one provided from the API" + messages[0]);
                         
 
                     }
 
-                    // Console.WriteLine(result.Validate(schema1, validationEventHandler));
-
-                    //foreach (string message in messages)
-                    //    {
-                    //        Console.WriteLine(message);
-                    //    }
 
                 }
 
-
-                //JArray resultArr = JArray.Parse(results);
-
             }
 
-            /*
-            https://localhost:44388/api/Carrier/GetAllCarriers.xml
-             */
-
-            // true
         }
         public JSchema jSchemaPath(String path)
         {
-           // JSchema schema = JSchema.Parse(File.ReadAllText(@"..\DoppleApi\JsonSchemas\StationJSONSchema.json"));
             
             switch (path)
             {

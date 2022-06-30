@@ -10,6 +10,8 @@ namespace DoppleApi.Controllers
     public class InstructionController : Controller
     {
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "Instruction";
         public InstructionController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -32,6 +34,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return Instructions;
 
             }
@@ -53,6 +57,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);                
                 return Instructions;
 
             }
@@ -67,12 +73,14 @@ namespace DoppleApi.Controllers
             Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == Instructions.StationId);
             var entity = new Instruction()
             {
+
                 InstructionId = Instructions.InstructionId,
                 Description = Instructions.Description,
                 ImagePath = Instructions.ImagePath,
                 StationId = stat.StationId,
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Instructions.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -86,6 +94,8 @@ namespace DoppleApi.Controllers
             {
                 InstructionId = Id,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Instructions.Attach(entity);
             DoppleDB.Instructions.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -96,10 +106,12 @@ namespace DoppleApi.Controllers
         public async Task<HttpStatusCode> UpdateUser(InstructionModel Instructions)
         {
             var entity = await DoppleDB.Instructions.FirstOrDefaultAsync(s => s.InstructionId == Instructions.InstructionId);
-            entity.InstructionId = Instructions.InstructionId;
+            
             entity.Description = Instructions.Description;
             entity.ImagePath = Instructions.ImagePath;
             entity.StationId = Instructions.StationId;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }     

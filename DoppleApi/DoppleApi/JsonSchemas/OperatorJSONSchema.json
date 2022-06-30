@@ -5,12 +5,20 @@
     "operatorId": {
       "type": "string"
     },
-    "stationId": {
-      "type": "integer"
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "authorization": {
+      "type": "string"
     }
   },
   "required": [
     "operatorId",
-    "stationId"
+    "username",
+    "password",
+    "authorization"
   ]
 }

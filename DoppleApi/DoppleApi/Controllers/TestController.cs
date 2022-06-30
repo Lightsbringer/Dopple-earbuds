@@ -12,6 +12,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "Test";
         public TestController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -33,6 +35,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return Test;
 
             }
@@ -51,7 +55,8 @@ namespace DoppleApi.Controllers
                 TestId = Test.TestId,
                 OrderId = order.OrderId,
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Tests.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -65,6 +70,8 @@ namespace DoppleApi.Controllers
             {
                 TestId = Id,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Tests.Attach(entity);
             DoppleDB.Tests.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -75,8 +82,9 @@ namespace DoppleApi.Controllers
         {
             var entity = await DoppleDB.Tests.FirstOrDefaultAsync(s => s.TestId == Test.TestId);
             entity.TagId = Test.TagId;
-            entity.TestId = Test.TestId;
             entity.OrderId = Test.OrderId;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }

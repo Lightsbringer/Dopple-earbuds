@@ -10,6 +10,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "TestResult";
         public TestResultController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -33,6 +35,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return TestResult;
 
             }
@@ -53,7 +57,8 @@ namespace DoppleApi.Controllers
                 Reason = TestResult.Reason,
                 OperatorCompanyId = opr.OperatorId,
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Testresults.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -63,20 +68,15 @@ namespace DoppleApi.Controllers
         // delete test result by id and operatorID in either XML or  JSON format
         [HttpDelete("DeleteTestResult/{Id}.{format}"), FormatFilter]
         public async Task<HttpStatusCode> DeleteUser(int Id, String operatorId) 
-        {/// <summary>
-///  This class performs an important function.
-/// </summary>
+        {
             var entity = new Testresult()
             {
                 TestId = Id,
-                /// <summary>
-                ///  This class performs an important function.
-                /// </summary>
+              
                 OperatorCompanyId = operatorId,
             };
-            /// <summary>
-            ///  This class performs an important function.
-            /// </summary>
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Testresults.Attach(entity);
             DoppleDB.Testresults.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -87,10 +87,11 @@ namespace DoppleApi.Controllers
         public async Task<HttpStatusCode> UpdateUser(TestResultModel TestResult)
         {
             var entity = await DoppleDB.Testresults.FirstOrDefaultAsync(s => s.TestId == TestResult.TestId && s.OperatorCompanyId == TestResult.OperatorCompanyId);
-            entity.TestId = TestResult.TestId;
             entity.Result = TestResult.Result;
             entity.Reason = TestResult.Reason;
             entity.OperatorCompanyId = TestResult.OperatorCompanyId;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }

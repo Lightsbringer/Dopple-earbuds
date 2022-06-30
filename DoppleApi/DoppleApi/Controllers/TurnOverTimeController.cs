@@ -10,6 +10,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "TurnOverTime";
         public TurnOverTimeController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -33,6 +35,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return TurnOverTime;
 
             }
@@ -54,7 +58,8 @@ namespace DoppleApi.Controllers
                 TimeStart = TurnOverTime.TimeStart,
                 TimeEnd = TurnOverTime.TimeEnd,
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Turnovertimes.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -70,6 +75,8 @@ namespace DoppleApi.Controllers
                 OrderId = Id,
                 StationId = StationId,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Turnovertimes.Attach(entity);
             DoppleDB.Turnovertimes.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -80,11 +87,12 @@ namespace DoppleApi.Controllers
         public async Task<HttpStatusCode> UpdateUser(TurnOverTimeModel TurnOverTime)
         {
             var entity = await DoppleDB.Turnovertimes.FirstOrDefaultAsync(s => s.OrderId == TurnOverTime.OrderId && s.StationId == TurnOverTime.StationId);
-            entity.OrderId = TurnOverTime.OrderId;
             entity.StationId = TurnOverTime.StationId;
             entity.DateStart = TurnOverTime.DateStart;
             entity.TimeStart = TurnOverTime.TimeStart;
             entity.TimeEnd = TurnOverTime.TimeEnd;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }

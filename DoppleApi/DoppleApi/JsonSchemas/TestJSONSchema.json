@@ -2,23 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "tagId": {
+      "type": "string"
+    },
     "testId": {
       "type": "integer"
     },
-    "result": {
-      "type": "string"
-    },
-    "reason": {
-      "type": "string"
-    },
-    "operatorCompanyId": {
+    "orderId": {
       "type": "string"
     }
   },
   "required": [
+    "tagId",
     "testId",
-    "result",
-    "reason",
-    "operatorCompanyId"
+    "orderId"
   ]
 }

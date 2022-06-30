@@ -2,19 +2,35 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "tagId": {
+    "orderId": {
       "type": "string"
     },
-    "testId": {
+    "orderDate": {
+      "type": "string"
+    },
+    "faceplateText": {
+      "type": "string"
+    },
+    "earshellSize": {
       "type": "integer"
     },
-    "orderId": {
+    "earshellColor": {
+      "type": "string"
+    },
+    "cradleColor": {
+      "type": "string"
+    },
+    "statusOrder": {
       "type": "string"
     }
   },
   "required": [
-    "tagId",
-    "testId",
-    "orderId"
+    "orderId",
+    "orderDate",
+    "faceplateText",
+    "earshellSize",
+    "earshellColor",
+    "cradleColor",
+    "statusOrder"
   ]
 }

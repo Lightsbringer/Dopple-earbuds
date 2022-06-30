@@ -7,13 +7,13 @@ namespace DoppleApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    
     public class CarrierController : Controller
     {
-
+        
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
-        //this is used for validation not yet fully working
         PathController pathController = new();
-        JsonDraft007 jsonDraft007 = new JsonDraft007();
+        public String schemaName = "Carrier";
         public CarrierController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -61,10 +61,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
-                //This is used for validation, not yet fully working
-                jsonDraft007.jSchemaPath("Carrier");
-               var randkind = pathController.GetUri();
-               jsonDraft007.random(randkind);
+               var path = pathController.GetUri();
+               pathController.validateXMLorJSON(path,schemaName);
                 return Carrier;
             }
         }
@@ -83,6 +81,8 @@ namespace DoppleApi.Controllers
                 StatusCarrier = Carrier.StatusCarrier,
 
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
 
             DoppleDB.Carriers.Add(entity);
 
@@ -97,6 +97,8 @@ namespace DoppleApi.Controllers
             {
                 TagId = Id,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);            
             DoppleDB.Carriers.Attach(entity);
             DoppleDB.Carriers.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -109,10 +111,12 @@ namespace DoppleApi.Controllers
         {
             var entity = await DoppleDB.Carriers.FirstOrDefaultAsync(s => s.TagId == Carrier.TagId);
 
-            entity.TagId = Carrier.TagId;
+            
             entity.OrderIdO = Carrier.OrderIdO;
             entity.StationId = Carrier.StationId;
             entity.StatusCarrier = Carrier.StatusCarrier;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);            
 
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;

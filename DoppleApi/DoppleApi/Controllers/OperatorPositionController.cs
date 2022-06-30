@@ -13,6 +13,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "OperatorPosition";
         public OperatorPositionController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
             this.DoppleDB = bs39hu6mp56dbv0qContext;
@@ -32,6 +34,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return OperatorPosition;
 
             }
@@ -42,7 +46,7 @@ namespace DoppleApi.Controllers
         {
 
 
-            // get existing subject with Id=202
+           
             Station stat = DoppleDB.Stations.FirstOrDefault(s => s.StationId == OperatorPosition.StationId);
             Operator opr = DoppleDB.Operators.FirstOrDefault(s => s.OperatorId == OperatorPosition.OperatorId);
             var entity = new Operatorposition()
@@ -50,7 +54,8 @@ namespace DoppleApi.Controllers
                 OperatorId = opr.OperatorId,
                 StationId = stat.StationId,
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Operatorpositions.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -66,6 +71,8 @@ namespace DoppleApi.Controllers
             };
             DoppleDB.Operatorpositions.Attach(entity);
             DoppleDB.Operatorpositions.Remove(entity);
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
@@ -74,8 +81,10 @@ namespace DoppleApi.Controllers
         public async Task<HttpStatusCode> UpdateUser(OperatorPositionModel OperatorPosition)
         {
             var entity = await DoppleDB.Operatorpositions.FirstOrDefaultAsync(s => s.OperatorId == OperatorPosition.OperatorId);
-            entity.OperatorId = OperatorPosition.OperatorId;
+            
             entity.StationId = OperatorPosition.StationId;
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }

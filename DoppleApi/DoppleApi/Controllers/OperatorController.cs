@@ -11,6 +11,8 @@ namespace DoppleApi.Controllers
     {
 
         private readonly bs39hu6mp56dbv0qContext DoppleDB;
+        PathController pathController = new();
+        public String schemaName = "Operator";
 
         public OperatorController(bs39hu6mp56dbv0qContext bs39hu6mp56dbv0qContext)
         {
@@ -34,6 +36,8 @@ namespace DoppleApi.Controllers
             }
             else
             {
+                var path = pathController.GetUri();
+                pathController.validateXMLorJSON(path, schemaName);
                 return Operator;
             }
         }
@@ -50,7 +54,8 @@ namespace DoppleApi.Controllers
                 Authorization = Operator.Authorization,
 
             };
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Operators.Add(entity);
 
             await DoppleDB.SaveChangesAsync();
@@ -64,6 +69,8 @@ namespace DoppleApi.Controllers
             {
                 OperatorId = Id,
             };
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             DoppleDB.Operators.Attach(entity);
             DoppleDB.Operators.Remove(entity);
             await DoppleDB.SaveChangesAsync();
@@ -76,11 +83,12 @@ namespace DoppleApi.Controllers
         {
             var entity = await DoppleDB.Operators.FirstOrDefaultAsync(s => s.OperatorId == Operator.OperatorId);
 
-            entity.OperatorId = Operator.OperatorId;
+            
             entity.Username = Operator.Username;
             entity.Password = Operator.Password;
             entity.Authorization = Operator.Authorization;
-
+            var path = pathController.GetUri();
+            pathController.validateXMLorJSON(path, schemaName);
             await DoppleDB.SaveChangesAsync();
             return HttpStatusCode.OK;
         }
