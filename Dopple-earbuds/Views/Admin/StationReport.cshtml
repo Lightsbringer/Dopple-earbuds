@@ -1,0 +1,29 @@
+﻿@model WebApplication3.APIDTOs.StationEntity
+
+@{
+    ViewData["Title"] = "StationReport";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h1>StationReport</h1>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Station#</th>
+            <th scope="col">Status</th>
+            <th scope="col">Operator at Station</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+    <td>@Model.StationId</td>
+    <td>@Model.StatusStation</td>
+    <td>@Html.ActionLink("Update To Offline", "Update", new { id = Model.StationId, status = "OFFLIN" })</td>
+    <td>@Html.ActionLink("Update To Working", "Update", new { id = Model.StationId , status = "WORKIN" })</td>
+        </tr>
+    </tbody>
+</table>

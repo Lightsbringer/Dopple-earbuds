@@ -1,0 +1,53 @@
+﻿@model WebApplication3.Models.AddInstruction
+
+@{
+    ViewData["Title"] = "AddInstruction";
+    //https://localhost:44326/admin/addinstruction access this page
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+
+
+<h4>AddInstruction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddInstruction">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InstructionId" class="control-label"></label>
+                <input asp-for="InstructionId" class="form-control" />
+                <span asp-validation-for="InstructionId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StationId" class="control-label"></label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Choose station</option>
+                    <option value="1">Station 1</option>
+                    <option value="2">Station 2</</option>
+                    <option value="3">Station 3</</option>
+                </select>
+            </div>
+            <div class=" form-group mb-3">
+                <label for="formFile" class="form-label">Image</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary float-right" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

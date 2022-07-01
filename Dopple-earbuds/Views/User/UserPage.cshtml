@@ -1,0 +1,56 @@
+﻿@model WebApplication3.Models.UserPage
+@{
+    ViewData["Title"] = "UserPage";
+    Layout = "~/Views/Shared/_UserPageLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col border ">
+            <h3>ORDER</h3>
+            <span>2022</span>
+        </div>
+        <div class="col border">
+            <h3>WORKSTATION</h3>
+            <span>2</span>
+        </div>
+        <div class="col border">
+            <h3>RESOURCE</h3>
+            <span>2</span>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col border">
+            <div class="container">
+                <h5>Name: Sub Assembly E-Module -input</h5>
+                <div class="row border">
+                    <div class="col">
+                        <h6>Steps</h6>
+                        <p>1</p>
+                    </div>
+                    <div class="col">
+                        <h6>Description</h6>
+                        <p>Use Glue on designated location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col border">
+            <img src="../Images/instruct1.png" alt="picture" class="img-fluid rounded" />
+        </div>
+    </div>
+</div>
+
+{<div class="form-group">
+        <label asp-for="StationId" class="control-label"></label>
+        <input asp-for="StationId" class="form-control" />
+        <span asp-validation-for="StationId" class="text-danger"></span>
+        <button type="submit" onclick="location.href='@Url.Action("UserPage","UserController")'" class="btn btn-primary">Save Station and Scan</button>
+    </div>
+
+}
+

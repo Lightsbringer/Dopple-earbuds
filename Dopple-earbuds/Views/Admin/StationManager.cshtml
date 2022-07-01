@@ -1,0 +1,26 @@
+﻿@model List<WebApplication3.APIDTOs.StationEntity>
+@{ ViewData["Title"] = "StationManager";
+                //https://localhost:44326/admin/StationManager access this page
+
+                Layout = "~/Views/Shared/_AdminPageLayout.cshtml"; }
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Station#</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stationEntity in Model)
+            {
+        <tr>
+            <th scope="row">@Html.ActionLink(@stationEntity.StationId.ToString(), "StationReport", new { id = stationEntity.StationId })</th>
+            <td>@stationEntity.StatusStation</td>
+            <th scope="row">@Html.ActionLink("Delete Station", "StationDelete", new { id = stationEntity.StationId })</th>
+        </tr>
+            }
+    </tbody>
+</table>
+<button type="button" class="btn-primary" href="">Create Station</button>
