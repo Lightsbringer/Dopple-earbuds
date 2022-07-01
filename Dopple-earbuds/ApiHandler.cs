@@ -93,7 +93,7 @@ namespace WebApplication3
                         var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var json_schema = File.ReadAllText("InstructionJSONSchema.json");
+                            var json_schema = File.ReadAllText("JSONSchemas/InstructionJSONSchema.json");
                             var data = result.Content.ReadAsStringAsync().Result;
                             var model = JObject.Parse(data);
                             var schema = JSchema.Parse(json_schema);
@@ -129,7 +129,7 @@ namespace WebApplication3
                     var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                         var json_schema = File.ReadAllText("StationJSONSchema.json");
+                         var json_schema = File.ReadAllText("JSONSchemas/StationJSONSchema.json");
                          var data = result.Content.ReadAsStringAsync().Result;
                          var model = JObject.Parse(data);
                          var schema = JSchema.Parse(json_schema);
@@ -164,7 +164,7 @@ namespace WebApplication3
                     var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var json_schema = File.ReadAllText("StationJSONSchema.json");
+                            var json_schema = File.ReadAllText("JSONSchemas/StationJSONSchema.json");
                             var data = result.Content.ReadAsStringAsync().Result;
                             var model = JObject.Parse(data);
                             var schema = JSchema.Parse(json_schema);
