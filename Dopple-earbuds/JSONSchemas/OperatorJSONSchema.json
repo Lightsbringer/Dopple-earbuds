@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "operatorId": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "authorization": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "operatorId",
+    "username",
+    "password",
+    "authorization"
+  ]
+}

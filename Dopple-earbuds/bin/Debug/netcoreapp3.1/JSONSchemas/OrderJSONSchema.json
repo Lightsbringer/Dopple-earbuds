@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string"
+    },
+    "orderDate": {
+      "type": "string"
+    },
+    "faceplateText": {
+      "type": "string"
+    },
+    "earshellSize": {
+      "type": "integer"
+    },
+    "earshellColor": {
+      "type": "string"
+    },
+    "cradleColor": {
+      "type": "string"
+    },
+    "statusOrder": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderId",
+    "orderDate",
+    "faceplateText",
+    "earshellSize",
+    "earshellColor",
+    "cradleColor",
+    "statusOrder"
+  ]
+}

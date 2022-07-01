@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "instructionId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "imagePath": {
+      "type": "string"
+    },
+    "stationId": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "instructionId",
+    "description",
+    "imagePath",
+    "stationId"
+  ]
+}

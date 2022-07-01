@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\Documents\\GitHub\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj": {}
+    "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\Documents\\GitHub\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj": {
+    "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\Documents\\GitHub\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj",
+        "projectUniqueName": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj",
         "projectName": "WebApplication3",
-        "projectPath": "C:\\Users\\Gebruiker\\Documents\\GitHub\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj",
-        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\Documents\\GitHub\\Dopple-earbuds\\Dopple-earbuds\\obj\\",
+        "projectPath": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\Dopple-earbuds\\WebApplication3.csproj",
+        "packagesPath": "C:\\Users\\Jerem\\.nuget\\packages\\",
+        "outputPath": "E:\\y2\\y2 again\\MMP\\Dopple-earbuds\\Dopple-earbuds\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jerem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -57,6 +55,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Newtonsoft.Json.Schema": {
+              "target": "Package",
+              "version": "[3.0.14, )"
             }
           },
           "imports": [
@@ -77,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     }

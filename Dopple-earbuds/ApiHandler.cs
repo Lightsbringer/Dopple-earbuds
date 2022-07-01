@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -11,33 +14,41 @@ namespace WebApplication3
 {
     public class ApiHandler
     {
+      
         private string URL = "https://localhost:44388/api/";
-        public OperatorEntity GetOperatorFromApiByOperatorId(int id)
+        public  OperatorEntity GetOperatorFromApiByOperatorId(int id)
         {
             try
             {
-                var _operator = new OperatorEntity();
+               
                 var client = new HttpClient();
+                OperatorEntity _operator = new OperatorEntity();
                 var getDataTask = client.GetAsync(URL + "Operator/GetOperatorById.json?Id=" + id)
-                .ContinueWith(response =>
-                {
-                    var result = response.Result;
-                    if (result.IsSuccessStatusCode)
+                    .ContinueWith(response =>
                     {
-                        var readResult = result.Content.ReadAsAsync<OperatorEntity>();
-                        readResult.Wait();
-                        _operator = readResult.Result;
-                        
-                    }
-                
-                });
+                        var result = response.Result;
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var json_schema = File.ReadAllText("JSONSchemas/OperatorJSONSchema.json");
+                            var data = result.Content.ReadAsStringAsync().Result;
+                            var model = JObject.Parse(data);
+                            var schema = JSchema.Parse(json_schema);
+                            bool valid = model.IsValid(schema);
+                            if (valid)
+                            {
+                                var readResult = result.Content.ReadAsAsync<OperatorEntity>();
+                                readResult.Wait();
+                                _operator = readResult.Result;
+                                
+                            }
+                        }
+                    });
                 getDataTask.Wait();
                 return _operator;
+           
             }
-            
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -82,10 +93,17 @@ namespace WebApplication3
                         var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var readResult = result.Content.ReadAsAsync<InstructionEntity>();
-                            readResult.Wait();
-                            //result
-                            instruction = readResult.Result;
+                            var json_schema = File.ReadAllText("InstructionJSONSchema.json");
+                            var data = result.Content.ReadAsStringAsync().Result;
+                            var model = JObject.Parse(data);
+                            var schema = JSchema.Parse(json_schema);
+                            bool valid = model.IsValid(schema);
+                            if (valid)
+                            {
+                                var readResult = result.Content.ReadAsAsync<InstructionEntity>();
+                                readResult.Wait();
+                                instruction = readResult.Result;
+                            }
                         }
                     });
                 getDataTask.Wait();
@@ -108,12 +126,20 @@ namespace WebApplication3
                 var getDataTask = client.GetAsync(URL + "Station/GetStationById.json?Id=" + id)
                     .ContinueWith(response =>
                     {
-                        var result = response.Result;
+                    var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var readResult = result.Content.ReadAsAsync<StationEntity>();
-                            readResult.Wait();
-                            station = readResult.Result;
+                         var json_schema = File.ReadAllText("StationJSONSchema.json");
+                         var data = result.Content.ReadAsStringAsync().Result;
+                         var model = JObject.Parse(data);
+                         var schema = JSchema.Parse(json_schema);
+                         bool valid = model.IsValid(schema);
+                            if (valid)
+                            {
+                                var readResult = result.Content.ReadAsAsync<StationEntity>();
+                                readResult.Wait();
+                                station = readResult.Result;
+                            }
                         }
                     });
                 getDataTask.Wait();
@@ -135,12 +161,20 @@ namespace WebApplication3
                 var getDataTask = client.GetAsync(URL + "Station/GetAllCarriers.json")
                     .ContinueWith(response =>
                     {
-                        var result = response.Result;
+                    var result = response.Result;
                         if (result.IsSuccessStatusCode)
                         {
-                            var readResult = result.Content.ReadAsAsync<List<StationEntity>>();
-                            readResult.Wait();
-                            stations = readResult.Result;
+                            var json_schema = File.ReadAllText("StationJSONSchema.json");
+                            var data = result.Content.ReadAsStringAsync().Result;
+                            var model = JObject.Parse(data);
+                            var schema = JSchema.Parse(json_schema);
+                            bool valid = model.IsValid(schema);
+                            if (valid)
+                            {
+                                var readResult = result.Content.ReadAsAsync<List<StationEntity>>();
+                                readResult.Wait();
+                                stations = readResult.Result;
+                            }
                         }
                     });
                 getDataTask.Wait();
