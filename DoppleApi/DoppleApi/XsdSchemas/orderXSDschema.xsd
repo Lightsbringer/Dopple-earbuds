@@ -3,9 +3,28 @@
 
 	<xs:element name="order">
 		<xs:complexType>
-			<xs:attribute name="tagId" type="xs:string" use="required"/>
+		
+			<xs:attribute name="tagId" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="5"/>
+						<xs:pattern value="([0-9])*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			
 			<xs:attribute name="testId" type="xs:nonNegativeInteger" use="required"/>
-			<xs:attribute name="orderId" type="xs:string" use="required"/>
+						
+			<xs:attribute name="orderId" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:pattern value="([0-9])*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			
 		</xs:complexType>
 	</xs:element>
 
