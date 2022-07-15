@@ -3,11 +3,14 @@
 
 	<xs:element name="operatorPosition">
 		<xs:complexType>
+		
 			<xs:attribute name="operatorId" use="required">
-				<xs:restriction base="xs:string">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
 						<xs:minLength value="1"/>
 						<xs:pattern value="([0-9])*"/>
-				</xs:restriction>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 			
 			<xs:attribute name="stationId" use="required">

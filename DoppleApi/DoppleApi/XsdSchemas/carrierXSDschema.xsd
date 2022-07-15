@@ -15,10 +15,12 @@
 			</xs:attribute>
 			
 			<xs:attribute name="orderId" use="required">
-				<xs:restriction base="xs:string">
-						<xs:minLength value="1"/>
-						<xs:pattern value="([0-9])*"/>
-				</xs:restriction>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:pattern value="([0-9])*"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:attribute>
 			
 			<xs:attribute name="stationId" use="required">
