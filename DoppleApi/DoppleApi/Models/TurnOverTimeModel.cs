@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DoppleApi.Models
 {
     public class TurnOverTimeModel
     {
-        [Key]
+        [ForeignKey("OrderId")]
         public string OrderId { get; set; }
-        [Key]
+        [ForeignKey("StationId")]
         public int StationId { get; set; }
         
         public DateTime DateStart { get; set; }
+       
         
         public TimeSpan TimeStart { get; set; }
         

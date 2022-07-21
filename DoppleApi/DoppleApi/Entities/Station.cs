@@ -1,4 +1,7 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace DoppleApi.Entities
 {
@@ -14,6 +17,7 @@ namespace DoppleApi.Entities
         public string StatusStation { get; set; }
 
         public virtual Instruction Instruction { get; set; }
+        public virtual Turnovertime Turnovertime { get; set; }
         public virtual ICollection<Carrier> Carriers { get; set; }
         public virtual ICollection<Operatorposition> Operatorpositions { get; set; }
     }

@@ -1,4 +1,7 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace DoppleApi.Entities
 {
@@ -18,6 +21,7 @@ namespace DoppleApi.Entities
         public string CradleColor { get; set; }
         public string StatusOrder { get; set; }
 
+        public virtual Turnovertime Turnovertime { get; set; }
         public virtual ICollection<Carrier> Carriers { get; set; }
         public virtual ICollection<Test> Tests { get; set; }
     }

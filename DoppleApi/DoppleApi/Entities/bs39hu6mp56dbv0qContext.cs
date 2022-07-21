@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -29,6 +31,7 @@ namespace DoppleApi.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseMySQL("server=yjo6uubt3u5c16az.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;port=3306;user=sm2p93rnfo9ctvxh;password=lck1q8l6r8sqg779;database=bs39hu6mp56dbv0q");
             }
         }
@@ -263,32 +266,35 @@ namespace DoppleApi.Entities
 
             modelBuilder.Entity<Turnovertime>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.StationId, e.OrderId })
+                    .HasName("PRIMARY");
 
                 entity.ToTable("turnovertime");
+
+                entity.HasIndex(e => e.OrderId, "OrderID_UNIQUE")
+                    .IsUnique();
 
                 entity.HasIndex(e => e.StationId, "StationID")
                     .IsUnique();
 
                 entity.HasIndex(e => e.OrderId, "orderID_TOT_FK");
 
-                entity.Property(e => e.DateStart).HasColumnType("date");
+                entity.Property(e => e.StationId).HasColumnName("StationID");
 
                 entity.Property(e => e.OrderId)
-                    .IsRequired()
                     .HasMaxLength(10)
                     .HasColumnName("OrderID");
 
-                entity.Property(e => e.StationId).HasColumnName("StationID");
+                entity.Property(e => e.DateStart).HasColumnType("date");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
-                    .HasForeignKey(d => d.OrderId)
+                    .WithOne(p => p.Turnovertime)
+                    .HasForeignKey<Turnovertime>(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("orderID_TOT_FK");
 
                 entity.HasOne(d => d.Station)
-                    .WithOne()
+                    .WithOne(p => p.Turnovertime)
                     .HasForeignKey<Turnovertime>(d => d.StationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("StationID_TOT_FK");
@@ -298,9 +304,5 @@ namespace DoppleApi.Entities
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        public DbSet<DoppleApi.Models.InstructionModel> InstructionModel { get; set; }
-
-        public DbSet<Models.StationModel> StationModel { get; set; }
     }
 }

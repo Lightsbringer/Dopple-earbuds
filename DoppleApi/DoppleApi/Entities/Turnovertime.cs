@@ -1,4 +1,7 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace DoppleApi.Entities
 {
@@ -10,7 +13,7 @@ namespace DoppleApi.Entities
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
 
-       public virtual Order Order { get; set; }
-       public virtual Station Station { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Station Station { get; set; }
     }
 }
