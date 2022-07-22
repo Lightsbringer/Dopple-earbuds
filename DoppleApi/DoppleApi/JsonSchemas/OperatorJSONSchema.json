@@ -3,22 +3,18 @@
   "type": "object",
   "properties": {
     "operatorId": {
-      "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "pattern": "([0-9])*"
     },
-    "username": {
-      "type": "string"
-    },
-    "password": {
-      "type": "string"
-    },
-    "authorization": {
-      "type": "string"
+    "stationId": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 999
     }
   },
   "required": [
     "operatorId",
-    "username",
-    "password",
-    "authorization"
+    "stationId"
   ]
 }

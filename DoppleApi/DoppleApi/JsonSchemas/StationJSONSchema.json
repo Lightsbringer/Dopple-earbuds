@@ -3,10 +3,15 @@
   "type": "object",
   "properties": {
     "stationId": {
-      "type": "integer"
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 999
     },
     "statusStation": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8,
+      "pattern": "[a-zA-Z]"
     }
   },
   "required": [
