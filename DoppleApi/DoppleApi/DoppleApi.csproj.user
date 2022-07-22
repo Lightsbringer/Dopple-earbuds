@@ -16,4 +16,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <ItemGroup>
+    <None Update="XsdSchemas\stationXSDschema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="XsdSchemas\testResultXSDschema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="XsdSchemas\testXSDschema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
 </Project>
