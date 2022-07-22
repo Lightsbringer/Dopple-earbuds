@@ -3,25 +3,16 @@
   "type": "object",
   "properties": {
     "testId": {
-      "type": "integer",
-      "minimum": 1
+      "type": "integer"
     },
     "result": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 8,
-      "pattern": "[a-zA-Z]"
+      "type": "string"
     },
     "reason": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 8,
-      "pattern": "[a-zA-Z]"
+      "type": "string"
     },
     "operatorCompanyId": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "([0-9])*"
+      "type": "string"
     }
   },
   "required": [

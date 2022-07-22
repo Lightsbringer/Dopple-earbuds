@@ -3,20 +3,13 @@
   "type": "object",
   "properties": {
     "tagId": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 5,
-        "pattern": "([0-9])*"
+      "type": "string"
     },
-    "orderId": {
-        "type": "string",
-        "minLength": 1,
-        "pattern": "([0-9])*"
+    "orderIdO": {
+      "type": "string"
     },
     "stationId": {
-        "type": "integer",
-        "minimum": 0,
-        "maximum": 999
+      "type": "integer"
     },
     "statusCarrier": {
       "type": "string"
