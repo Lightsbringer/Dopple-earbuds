@@ -6,10 +6,14 @@
       "type": "string"
     },
     "username": {
-      "type": "string"
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8,
+        "pattern": "[a-zA-Z]"
     },
     "password": {
-      "type": "string"
+        "type": "string",
+        "pattern": "[a-zA-Z0-9]{9}"
     },
     "authorization": {
       "type": "string"
